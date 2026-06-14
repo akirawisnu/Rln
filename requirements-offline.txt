@@ -1,0 +1,13 @@
+# requirements-offline.txt — extra packages for the 'offline' build tier.
+# Installed on top of the base requirements.txt.
+#
+# Use:
+#   pip install -r requirements.txt -r requirements-offline.txt
+#
+# What you get:
+#   - nlp translate   (argos-translate, works fully offline after first download)
+#   - nlp summarize   (sumy, extractive, 7 algorithms, pure Python)
+
+argostranslate>=1.9.0
+sumy>=0.11.0
+nltk>=3.8.0

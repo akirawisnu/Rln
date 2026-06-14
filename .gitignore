@@ -1,0 +1,45 @@
+# Build outputs
+/dist/
+/build/
+*.apk
+*.exe
+*.app
+*.spec.bak
+
+# Buildozer / python-for-android
+/android/.buildozer/
+/android/bin/
+/android/.venv/
+/android/.kvenv/
+android/p4a-recipes/*/prebuilt/
+android/_polars_pkg/
+android/_shots/
+android/_showcase/
+
+# Scratch / diagnostics (kept local)
+android/_*.sh
+android/_*.py
+
+# Large bundled models / data
+/argos_models/
+/hf_models/
+/hf_cache/
+examples/*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# dev tests (not needed by users)
+/tests/
+/test_*.py
+
+# reference manuals (regenerated separately)
+*.docx

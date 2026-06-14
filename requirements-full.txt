@@ -1,0 +1,31 @@
+# requirements-full.txt — extra packages for the 'full' build tier.
+# Installed on top of requirements.txt AND requirements-offline.txt.
+#
+# Use:
+#   pip install -r requirements.txt -r requirements-offline.txt -r requirements-full.txt
+#
+# What you get (on top of offline):
+#   - hf classify / sentiment / ner / embed  (transformers + torch)
+#   - hf translate (neural, better quality than argos for some pairs)
+#   - hf summarize (abstractive, vs extractive sumy)
+#
+# NOTE ON torch:
+#   The plain `torch` install grabs ~2 GB of CUDA libraries on Linux. If you're
+#   on CPU-only (which most Rln use cases are), run one of these INSTEAD of
+#   the torch line below:
+#
+#     # CPU-only (≈200 MB):
+#     pip install torch --index-url https://download.pytorch.org/whl/cpu
+#
+#     # Apple Silicon (MPS support):
+#     pip install torch
+#
+#     # Linux + CUDA 12.1:
+#     pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+torch>=2.0.0
+huggingface-hub>=0.17.0
+tokenizers>=0.14.0
+safetensors>=0.4.0
