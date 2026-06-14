@@ -1,0 +1,421 @@
+id,name,gender,marital_status,religion,n_children,age,year_of_birth,city,income,email,phone,job_title,notes
+1001,Chiara Anderson,Female,Married,Christian,0,48,1977,San Diego,152270,chiara.anderson0@company.io,(549) 605-9321,Carpenter,Test record — disregard.
+1002,Eka1 Anderson,Male,Single,Buddhist,0,40,1985,Seattle,128725,eka1.anderson1@harvard.edu,379.398.5415,Designer,Contact via 212-5559 for details.
+1003,Satoshi Pratama,Male,Married,Hindu,0,51,1974,Phoenix,42747,satoshi.pratama2@work.co.uk,(888) 690-7774,Researcher,All good.
+1004,James Johnson,Male,Single,Other,4,63,1962,Washington,83647,james.johnson_at_gmail.com,861-339-7888,Product Manager,No action required.
+1005, Nia  Tanaka ,Female,Married,Other,1,38,1987,Boston,69909,.nia..tanaka.4@stanford.edu,842.671.8797,Accountant,Sent invoice #00004 on 2024-03-12.
+1006, Chiara  Patel ,Female,Married,Other,3,38,1987,Los Angeles,104062,.chiara..patel._at_gmail.com,673.623.0917,Designer,No action required.
+1007, Emily  Patel ,Female,Single,Christian,2,64,1961,Washington,28833,.emily..patel.6@outlook.com,(778) 942-5169,Machine Learning Engineer,Meeting scheduled. Ping me on 303-5551 if needed.
+1008,Satoshi Pratama,Male,Married,Christian,0,52,1973,Philadelphia,71491,satoshi.pratama7@yahoo.com,413.791.5434,Electrician,Contact via 212-5559 for details.
+1009,John Rossi,Male,Single,Buddhist,0,35,1990,Seattle,87740,john.rossi8@harvard.edu,(267) 352-4595,Teacher,Meeting scheduled. Ping me on 303-5551 if needed.
+1010,Satoshi Hidayat,Male,Single,Jewish,1,49,1976,Philadelphia,18633,satoshi.hidayat9@tum.de,547-584-8753,Designer,Prefers email over calls.
+1011,John Garcia,Male,Married,None,1,35,1990,Washington,25570,john.garcia10@ugm.ac.id,784-820-6382,Professor,Follow up 555-0198 next week.
+1012,Sari Hidayat,Female,Married,Islam,2,35,1990,Seattle,15969,sari.hidayat_at_gmail.com,809.319.5050,Machine Learning Engineer,Follow up 555-0198 next week.
+1013,James Nguyen,Male,Married,Islam,0,45,1980,Chicago,42269,james.nguyen_at_gmail.com,+19262324448,Carpenter,Prefers email over calls.
+1014,Arif Rossi,Male,Widowed,Hindu,1,18,2007,San Diego,72740,arif.rossi13@company.io,288.708.3893,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1015,Sari Johnson,Female,Single,None,0,18,2007,San Diego,112004,sari.johnson_at_gmail.com,662.509.3541,Sales Representative,Follow up 555-0198 next week.
+1016,Elena10 Garcia,Female,Married,None,1,34,1991,New York,51059,elena10.garcia15@mit.edu,(379) 314-6131,Software Engineer,No action required.
+1017, Michael  Patel ,Male,Married,Jewish,1,27,1998,Chicago,120058,.michael..patel.16@ugm.ac.id,+19964061517,Marketing Analyst,Test record — disregard.
+1018,Ayu Smith,Female,Single,Christian,2,46,1979,Phoenix,22947,ayu.smith17@gmail.com,718-225-7907,Accountant,Test record — disregard.
+1019,Fatima Hidayat,Female,Married,Islam,3,29,1996,San Diego,19209,fatima.hidayat18@mit.edu,394.548.7921,Marketing Analyst,Prefers email over calls.
+1020,Satoshi Anderson,Male,Single,Hindu,2,22,2003,San Antonio,47545,satoshi.anderson19@work.co.uk,(994) 535-2347,Sales Representative,Test record — disregard.
+1021,Jane Nguyen,Female,Single,None,0,62,1963,Austin,60550,jane.nguyen20@outlook.com,728-892-2174,Professor,Contact via 212-5559 for details.
+1022,Sari Hidayat,Female,Widowed,Christian,0,38,1987,San Diego,48147,sari.hidayat21@outlook.com,+19412377526,Machine Learning Engineer,All good.
+1023,ANDI ROSSI,Male,Single,Buddhist,2,42,1983,Phoenix,15723,andi.rossi22@outlook.com,(930) 734-1897,Physician,Prefers email over calls.
+1024,Michael Tanaka,Male,Widowed,None,0,22,2003,Austin,46675,michael.tanaka23@outlook.com,(518) 245-9736,Machine Learning Engineer,Contact via 212-5559 for details.
+1025,Fatima Pratama,Female,Divorced,Islam,3,34,1991,Chicago,23921,fatima.pratama24@tum.de,(541) 678-0755,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1026,Andi Garcia,Male,Single,Other,2,43,1982,Washington,70849,andi.garcia25@ugm.ac.id,(733) 984-5119,Designer,No action required.
+1027,Budi Müller,Male,Single,Islam,4,25,2000,Seattle,59971,budi.müller26@stanford.edu,791-976-5114,Machine Learning Engineer,No action required.
+1028, Arif  Kim ,Male,Single,Christian,4,47,1978,Phoenix,29233,.arif..kim.27@ugm.ac.id,528.405.3154,Teacher,Follow up 555-0198 next week.
+1029,Emily Tanaka,Female,Single,Islam,1,33,1992,Philadelphia,36951,emily.tanaka28@outlook.com,+14837455228,Teacher,Sent invoice #00028 on 2024-03-12.
+1030,Jane Müller,Female,Single,Christian,2,37,1988,Denver,27376,jane.müller29@gmail.com,887-320-4467,Product Manager,Meeting scheduled. Ping me on 303-5551 if needed.
+1031,Sari Hidayat,Female,Divorced,Christian,0,33,1992,San Diego,47359,sari.hidayat30@yahoo.com,(361) 480-1875,Designer,Follow up 555-0198 next week.
+1032,Ayu53 Müller,Female,Single,Other,1,67,1958,Boston,82894,ayu53.müller31@work.co.uk,(837) 773-8422,Marketing Analyst,Sent invoice #00031 on 2024-03-12.
+1033,Fatima Hidayat,Female,Married,Islam,5,41,1984,Phoenix,28505,,411.755.5739,Marketing Analyst,Follow up 555-0198 next week.
+1034,Carlos Rossi,Nonbinary,Married,Islam,2,27,1998,Denver,64681,carlos.rossi33@harvard.edu,477-344-4641,Product Manager,Sent invoice #00033 on 2024-03-12.
+1035,Michael Garcia,Male,Married,None,1,53,1972,Philadelphia,36620,michael.garcia34@ugm.ac.id,375.272.5101,Software Engineer,Test record — disregard.
+1036,Emily Müller,Female,Single,Hindu,2,24,2001,Boston,31695,emily.müller35@ugm.ac.id,753-654-0831,Professor,No action required.
+1037,Maria Nguyen,Female,Single,Islam,4,44,1981,Washington,46218,maria.nguyen36@work.co.uk,(229) 682-0826,Teacher,Sent invoice #00036 on 2024-03-12.
+1038,Linda Pratama,Female,Single,None,1,18,2007,Dallas,27739,linda.pratama37@tum.de,+15922551410,Accountant,Prefers email over calls.
+1039,Nia Müller,Female,Single,Islam,1,23,2002,Seattle,36152,nia.müller38@yahoo.com,+16013839766,Electrician,Sent invoice #00038 on 2024-03-12.
+1040,Nia Pratama,Female,Married,Christian,3,44,1981,Boston,25366,nia.pratama39@ugm.ac.id,831.564.5119,Physician,Meeting scheduled. Ping me on 303-5551 if needed.
+1041,Elena Kim,Female,Married,Islam,3,52,1973,Boston,144437,,(402) 930-8740,Carpenter,Contact via 212-5559 for details.
+1042,Carlos Rossi,Male,Married,Islam,2,44,1981,New York,49980,carlos.rossi41@yahoo.com,973-982-7629,Marketing Analyst,Test record — disregard.
+1043,Satoshi Kim,Male,Married,Islam,3,40,1985,San Diego,33361,satoshi.kim42@stanford.edu,(295) 915-7672,Teacher,No action required.
+1044,Ali Pratama,Male,Married,Other,3,37,1988,Washington,55143,ali.pratama43@harvard.edu,+16665177625,Software Engineer,Test record — disregard.
+1045,Carlos Nguyen,Male,Single,None,2,21,2004,Seattle,46083,carlos.nguyen44@work.co.uk,437.429.2354,Professor,Prefers email over calls.
+1046,Eka Müller,Male,Married,Hindu,2,31,1994,Seattle,43410,eka.müller45@ugm.ac.id,572.601.3004,Teacher,Follow up 555-0198 next week.
+1047,Michael Anderson,Male,Married,Islam,2,35,1990,Dallas,68719,michael.anderson46@ugm.ac.id,(532) 664-7987,Researcher,Meeting scheduled. Ping me on 303-5551 if needed.
+1048,Carlos Rossi,Male,Single,Christian,1,56,1969,Boston,74356,carlos.rossi47@company.io,266.686.1849,Designer,No action required.
+1049,Fatima47 Patel,Female,Single,Christian,1,46,1979,Dallas,36615,fatima47.patel48@company.io,690.672.2798,Software Engineer,No action required.
+1050,Ali Rossi,Male,Married,Christian,1,18,2007,Chicago,35714,ali.rossi49@work.co.uk,986-556-9903,Sales Representative,Test record — disregard.
+1051, Arif  Pratama ,Male,Married,Hindu,0,46,1979,Austin,42138,.arif..pratama.50@outlook.com,(720) 305-6646,Professor,Test record — disregard.
+1052,SATOSHI KIM,Male,Single,Christian,0,36,1989,Austin,15000,satoshi.kim51@stanford.edu,533.769.1162,Software Engineer,Test record — disregard.
+1053,Michael Johnson,Male,Married,Islam,4,32,1993,Denver,21303,michael.johnson52@outlook.com,+17456726566,Carpenter,Follow up 555-0198 next week.
+1054,Nia Johnson,Female,Married,Other,1,50,1975,Chicago,103962,nia.johnson53@harvard.edu,444-835-3992,Nurse,Test record — disregard.
+1055,NIA NGUYEN,Female,Married,Islam,0,56,1969,Boston,121143,nia.nguyen54@gmail.com,693.593.1082,Teacher,Sent invoice #00054 on 2024-03-12.
+1056,Linda Garcia,Female,Divorced,Christian,0,55,1970,New York,42745,linda.garcia55@gmail.com,+14139109682,Data Scientist,Sent invoice #00055 on 2024-03-12.
+1057,Budi Kim,Male,Single,Christian,0,30,1995,Washington,67312,budi.kim56@tum.de,645-780-5606,Electrician,Contact via 212-5559 for details.
+1058,Elena Kim,Female,Single,Islam,3,37,1988,Los Angeles,58173,elena.kim57@yahoo.com,+13778781276,Carpenter,Prefers email over calls.
+1059,Arif Hidayat,Male,Divorced,Christian,0,46,1979,New York,266567,arif.hidayat58@work.co.uk,+13178069766,Designer,Follow up 555-0198 next week.
+1060,Arif Anderson,Male,Single,Christian,3,55,1970,Phoenix,90741,arif.anderson_at_gmail.com,+15337681599,Carpenter,All good.
+1061,Carlos Patel,Nonbinary,Married,None,3,35,1990,Chicago,45690,carlos.patel60@work.co.uk,(380) 515-6648,Physician,Follow up 555-0198 next week.
+1062,Elena Johnson,Female,Married,Islam,4,39,1986,Boston,28982,elena.johnson61@work.co.uk,+18123119771,Machine Learning Engineer,Meeting scheduled. Ping me on 303-5551 if needed.
+1063,Fatima79 Müller,Female,Married,None,0,26,1999,San Antonio,20261,fatima79.müller_at_gmail.com,(535) 706-1007,Machine Learning Engineer,Prefers email over calls.
+1064,Maria Tanaka,Female,Single,Hindu,1,25,2000,Seattle,54825,maria.tanaka63@tum.de,(422) 342-9515,Marketing Analyst,Prefers email over calls.
+1065,Maria Garcia,Female,Divorced,Islam,3,53,1972,San Francisco,32338,maria.garcia64@company.io,+19753502444,Developer,Test record — disregard.
+1066,Linda Patel,Female,Widowed,Christian,0,60,1965,San Francisco,22421,,+17444986389,Researcher,Contact via 212-5559 for details.
+1067,Michael Anderson,Male,Married,Buddhist,1,40,1985,Seattle,34350,michael.anderson66@work.co.uk,400.410.5187,Data Scientist,Follow up 555-0198 next week.
+1068,Andi Müller,Male,Single,Jewish,0,56,1969,New York,27042,gmail.cm,+17838954989,Designer,Test record — disregard.
+1069,Carlos Rossi,Male,Single,Islam,3,47,1978,Chicago,123986,carlos.rossi68@yahoo.com,(935) 552-1462,Developer,Prefers email over calls.
+1070,Andi Rossi,Male,Single,Hindu,3,32,1993,Houston,79610,andi.rossi69@harvard.edu,826-722-6622,Professor,Test record — disregard.
+1071,Michael Hidayat,Male,Married,Christian,3,47,1978,Phoenix,48806,michael.hidayat70@stanford.edu,(501) 263-6049,Researcher,Test record — disregard.
+1072,Fatima Rossi,Female,Married,None,0,63,1962,Austin,110632,fatima.rossi71@yahoo.com,200.920.9175,Accountant,Sent invoice #00071 on 2024-03-12.
+1073,Chiara Nguyen,Female,Married,Islam,1,41,1984,San Diego,51151,chiara.nguyen72@company.io,312-488-0510,Data Scientist,Follow up 555-0198 next week.
+1074,Budi Tanaka,Male,Married,Other,1,63,1962,Phoenix,30524,budi.tanaka73@mit.edu,+16429199669,Developer,Follow up 555-0198 next week.
+1075,Nia Smith,Female,Married,Hindu,2,18,2007,Chicago,113291,nia.smith74@tum.de,+18405256271,Professor,Prefers email over calls.
+1076,John Müller,Male,Single,Christian,0,53,1972,San Francisco,65933,john.müller75@mit.edu,590-645-8931,Nurse,All good.
+1077,Elena Müller,Female,Married,Hindu,1,43,1982,Philadelphia,27709,elena.müller76@company.io,878-377-7780,Machine Learning Engineer,Meeting scheduled. Ping me on 303-5551 if needed.
+1078,ANDI SMITH,Male,Married,Hindu,0,37,1988,Philadelphia,44148,andi.smith_at_gmail.com,392.768.6301,Sales Representative,Contact via 212-5559 for details.
+1079,John Patel,Male,Married,Hindu,3,43,1982,Seattle,30285,john.patel78@company.io,627-357-4726,Professor,Prefers email over calls.
+1080,Carlos Patel,Male,Married,Buddhist,1,18,2007,Boston,22913,carlos.patel79@work.co.uk,(337) 211-1175,Sales Representative,Test record — disregard.
+1081,Chiara Kim,Female,Single,Hindu,2,38,1987,Austin,81584,chiara.kim80@ugm.ac.id,+13479387974,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1082,Carlos Patel,Male,Married,Other,1,46,1979,Boston,140109,carlos.patel81@harvard.edu,+13392862248,Marketing Analyst,Test record — disregard.
+1083, Maria  Garcia ,Female,Married,Hindu,3,62,1963,Austin,22715,.maria..garcia.82@tum.de,+16669129902,Data Scientist,All good.
+1084,Emily Kim,Female,Single,None,1,34,1991,Chicago,66811,emily.kim83@tum.de,+18383847444,Marketing Analyst,Test record — disregard.
+1085,Eka Johnson,Male,Married,Hindu,3,30,1995,Houston,34274,eka.johnson84@stanford.edu,765.660.6303,Teacher,Prefers email over calls.
+1086,Andi Anderson,Male,Single,Christian,1,34,1991,Dallas,37499,andi.anderson85@harvard.edu,(431) 390-6959,Physician,Follow up 555-0198 next week.
+1087,Satoshi Smith,Nonbinary,Married,Christian,4,54,1971,Houston,35389,satoshi.smith86@company.io,791.710.3878,Machine Learning Engineer,No action required.
+1088,Jane Kim,Female,Married,Christian,5,46,1979,Washington,30479,jane.kim_at_gmail.com,620.759.9442,Software Engineer,Contact via 212-5559 for details.
+1089,Ali Anderson,Male,Married,Jewish,1,34,1991,Phoenix,50346,ali.anderson88@yahoo.com,+12342389308,Researcher,Sent invoice #00088 on 2024-03-12.
+1090,Satoshi Smith,Male,Married,Islam,0,49,1976,Phoenix,31038,satoshi.smith89@harvard.edu,+19215771854,Sales Representative,Test record — disregard.
+1091,Budi Johnson,Male,Married,Islam,1,43,1982,Houston,56882,budi.johnson_at_gmail.com,907.281.2327,Data Scientist,All good.
+1092,Fatima Tanaka,Female,Married,Jewish,2,55,1970,Boston,47684,fatima.tanaka91@harvard.edu,(676) 729-1281,Researcher,Test record — disregard.
+1093,Fatima99 Tanaka,Female,Single,Islam,5,32,1993,Phoenix,42983,fatima99.tanaka92@outlook.com,451.683.1279,Accountant,Sent invoice #00092 on 2024-03-12.
+1094,Eka Müller,Male,Married,Islam,3,37,1988,Philadelphia,29757,eka.müller93@stanford.edu,(827) 254-5628,Marketing Analyst,Sent invoice #00093 on 2024-03-12.
+1095,ARIF TANAKA,Male,Single,Christian,3,36,1989,Washington,35695,arif.tanaka94@stanford.edu,+16806648399,Teacher,All good.
+1096,Eka Nguyen,Male,Single,None,0,21,2004,Seattle,74270,eka.nguyen95@stanford.edu,+17879515431,Professor,Test record — disregard.
+1097,Budi Patel,Nonbinary,Married,Christian,0,46,1979,Phoenix,64569,budi.patel96@harvard.edu,561-501-4738,Product Manager,No action required.
+1098,Elena Garcia,Female,Married,None,2,45,1980,Los Angeles,28633,elena.garcia97@yahoo.com,236.911.9791,Accountant,Contact via 212-5559 for details.
+1099,Michael Rossi,Nonbinary,Married,Other,4,42,1983,Boston,51773,michael.rossi98@work.co.uk,(944) 777-4267,Nurse,Prefers email over calls.
+1100,Sari Smith,Female,Single,Islam,2,38,1987,Philadelphia,74106,sari.smith_at_gmail.com,844-684-9472,Teacher,Prefers email over calls.
+1101, Eka  Pratama ,Male,Widowed,Other,0,22,2003,Washington,19571,.eka..pratama.100@tum.de,(786) 252-4780,Designer,All good.
+1102,Fatima Johnson,Female,Married,Christian,3,36,1989,Denver,66094,fatima.johnson101@work.co.uk,493-696-1351,Carpenter,Test record — disregard.
+1103,Emily Pratama,Female,Single,Other,4,37,1988,Washington,34049,emily.pratama102@company.io,717.278.4552,Software Engineer,No action required.
+1104,Ayu Garcia,Female,Single,Jewish,0,30,1995,Denver,67092,ayu.garcia103@work.co.uk,335.830.4603,Sales Representative,Sent invoice #00103 on 2024-03-12.
+1105,James Müller,Male,Single,Christian,3,39,1986,Phoenix,32215,james.müller104@ugm.ac.id,463-214-1827,Professor,Contact via 212-5559 for details.
+1106,Fatima Anderson,Female,Single,Islam,0,47,1978,Phoenix,18166,fatima.anderson105@company.io,+18059562476,Software Engineer,Meeting scheduled. Ping me on 303-5551 if needed.
+1107,Eka Pratama,Male,Divorced,None,4,68,1957,Boston,20027,eka.pratama106@outlook.com,578-379-4280,Carpenter,Test record — disregard.
+1108,James Nguyen,Male,Married,Islam,0,44,1981,Philadelphia,50334,james.nguyen107@company.io,(696) 385-8640,Designer,No action required.
+1109,Budi50 Tanaka,Male,Married,None,1,45,1980,San Antonio,56548,budi50.tanaka108@gmail.com,551-286-2376,Teacher,No action required.
+1110,Linda Nguyen,Female,Married,None,4,40,1985,Houston,29810,linda.nguyen109@yahoo.com,+17079706765,Physician,Sent invoice #00109 on 2024-03-12.
+1111,Emily Pratama,Female,Married,Buddhist,0,18,2007,San Diego,69649,emily.pratama110@mit.edu,443-876-7211,Designer,No action required.
+1112, Budi  Hidayat ,Male,Single,None,1,41,1984,Houston,19656,.budi..hidayat.111@mit.edu,(415) 791-5653,Sales Representative,Test record — disregard.
+1113,Jane Tanaka,Female,Single,None,1,42,1983,Dallas,47271,jane.tanaka112@harvard.edu,(857) 470-1900,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1114,Satoshi Rossi,Male,Married,Other,0,76,1949,San Francisco,25183,satoshi.rossi113@ugm.ac.id,+13716756533,Designer,Prefers email over calls.
+1115,Linda Pratama,Female,Single,Christian,0,39,1986,Boston,34251,linda.pratama114@ugm.ac.id,508-687-8724,Researcher,Test record — disregard.
+1116,Fatima Kim,Female,Single,Other,2,46,1979,Chicago,50315,fatima.kim115@outlook.com,+15888996390,Marketing Analyst,Contact via 212-5559 for details.
+1117,John Patel,Male,Married,Islam,0,41,1984,Austin,30539,john.patel116@yahoo.com,+14683488690,Accountant,Sent invoice #00116 on 2024-03-12.
+1118,Sari Anderson,Female,Single,Christian,5,25,2000,Dallas,39675,sari.anderson117@company.io,+12124957353,Software Engineer,Sent invoice #00117 on 2024-03-12.
+1119,Maria Nguyen,Female,Single,Christian,1,57,1968,Houston,85260,maria.nguyen118@outlook.com,(894) 523-8687,Electrician,Follow up 555-0198 next week.
+1120,John Tanaka,Male,Married,Hindu,0,52,1973,Boston,35692,john.tanaka119@tum.de,+12997445797,Carpenter,Follow up 555-0198 next week.
+1121, Linda  Patel ,Female,Single,Hindu,4,53,1972,San Diego,77623,.linda..patel.120@tum.de,825.867.4466,Carpenter,All good.
+1122,Ayu Kim,Female,Widowed,Christian,3,29,1996,Austin,26335,ayu.kim121@company.io,476.473.1610,Teacher,Contact via 212-5559 for details.
+1123,Ayu Patel,Female,Married,Other,2,61,1964,New York,65604,ayu.patel122@tum.de,+18707986408,Carpenter,All good.
+1124, Linda  Smith ,Female,Married,None,3,22,2003,San Antonio,108321,.linda..smith.123@work.co.uk,991-891-3961,Professor,No action required.
+1125,John Smith,Male,Married,Islam,0,50,1975,Boston,15000,john.smith_at_gmail.com,732.545.2947,Teacher,No action required.
+1126,Michael Anderson,Male,Single,Islam,0,72,1953,Los Angeles,31625,michael.anderson125@stanford.edu,(760) 210-0138,Machine Learning Engineer,Follow up 555-0198 next week.
+1127,Satoshi Hidayat,Male,Widowed,Islam,3,28,1997,Seattle,67331,satoshi.hidayat126@yahoo.com,(212) 621-1600,Product Manager,Meeting scheduled. Ping me on 303-5551 if needed.
+1128,Linda27 Garcia,Female,Married,None,2,34,1991,New York,43841,linda27.garcia127@harvard.edu,901-656-5759,Accountant,All good.
+1129,Jane Patel,Female,Single,Christian,0,43,1982,Dallas,60121,jane.patel128@mit.edu,942-490-4127,Nurse,Prefers email over calls.
+1130,Linda Garcia,Female,Married,None,3,34,1991,San Francisco,35165,linda.garcia129@harvard.edu,(234) 224-1506,Professor,Meeting scheduled. Ping me on 303-5551 if needed.
+1131,James Johnson,Male,Single,Islam,1,20,2005,San Antonio,51411,james.johnson130@stanford.edu,(808) 872-3552,Designer,Sent invoice #00130 on 2024-03-12.
+1132,Andi Smith,Male,Single,Islam,0,42,1983,Washington,44998,andi.smith131@company.io,925-322-1415,Professor,Meeting scheduled. Ping me on 303-5551 if needed.
+1133,Linda Smith,Female,Married,Other,0,27,1998,San Francisco,93179,linda.smith132@harvard.edu,584-872-9274,Teacher,Sent invoice #00132 on 2024-03-12.
+1134,Ayu Patel,Female,Single,None,0,48,1977,San Diego,56383,ayu.patel133@tum.de,313.912.3018,Data Scientist,Test record — disregard.
+1135,Arif Pratama,Male,Divorced,Christian,3,29,1996,Chicago,59022,arif.pratama134@mit.edu,+15016781240,Professor,Contact via 212-5559 for details.
+1136,Linda Smith,Female,Single,Christian,2,63,1962,Washington,39083,linda.smith135@outlook.com,483.987.6995,Accountant,All good.
+1137,Michael Nguyen,Male,Married,Islam,3,31,1994,Phoenix,37489,michael.nguyen136@ugm.ac.id,463.365.1212,Sales Representative,All good.
+1138,Chiara73 Kim,Female,Widowed,None,2,37,1988,Austin,38641,chiara73.kim137@yahoo.com,+19952636271,Carpenter,Follow up 555-0198 next week.
+1139,Jane Kim,Female,Single,Christian,0,53,1972,San Francisco,60897,jane.kim_at_gmail.com,540.261.4230,Nurse,Contact via 212-5559 for details.
+1140, Eka  Johnson ,Male,Married,Christian,0,24,2001,Los Angeles,38888,.eka..johnson.139@mit.edu,+13826511137,Physician,No action required.
+1141,James47 Johnson,Male,Married,Islam,1,45,1980,Dallas,57490,james47.johnson140@ugm.ac.id,405-824-6432,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1142,FATIMA PRATAMA,Female,Married,None,0,60,1965,Dallas,153502,fatima.pratama141@harvard.edu,860-703-1776,Data Scientist,Follow up 555-0198 next week.
+1143,Satoshi Johnson,Male,Single,Islam,1,19,2006,Boston,79151,satoshi.johnson142@tum.de,753-987-7065,Product Manager,Test record — disregard.
+1144,Emily Hidayat,Female,Married,Christian,3,44,1981,Washington,40973,emily.hidayat143@gmail.com,+18288581740,Teacher,Test record — disregard.
+1145,JAMES PRATAMA,Male,Single,Hindu,1,45,1980,San Francisco,94908,james.pratama144@mit.edu,(932) 465-1692,Data Scientist,Meeting scheduled. Ping me on 303-5551 if needed.
+1146,Satoshi Hidayat,Male,Single,Jewish,0,52,1973,Chicago,39165,satoshi.hidayat145@yahoo.com,274.272.9360,Physician,Meeting scheduled. Ping me on 303-5551 if needed.
+1147,Emily Kim,Female,Married,None,4,24,2001,San Francisco,15979,emily.kim146@yahoo.com,+19956560307,Sales Representative,Meeting scheduled. Ping me on 303-5551 if needed.
+1148,Emily Rossi,Female,Widowed,Christian,2,23,2002,Chicago,28157,emily.rossi_at_gmail.com,(352) 868-0014,Researcher,Follow up 555-0198 next week.
+1149,Arif Rossi,Male,Single,Jewish,0,49,1976,San Francisco,17519,arif.rossi148@gmail.com,880-599-4365,Nurse,Meeting scheduled. Ping me on 303-5551 if needed.
+1150,ALI JOHNSON,Male,Single,Islam,2,46,1979,Washington,40403,ali.johnson149@yahoo.com,(916) 537-6411,Sales Representative,No action required.
+1151,ELENA KIM,Nonbinary,Single,Christian,0,45,1980,Philadelphia,49519,elena.kim150@yahoo.com,+17279248039,Professor,Meeting scheduled. Ping me on 303-5551 if needed.
+1152,Ayu Smith,Female,Married,Islam,0,46,1979,San Diego,123258,ayu.smith151@mit.edu,646-613-1148,Designer,Sent invoice #00151 on 2024-03-12.
+1153,Michael Hidayat,Male,Single,Christian,1,32,1993,Washington,58677,michael.hidayat152@tum.de,(203) 593-7898,Product Manager,All good.
+1154,Sari Pratama,Female,Widowed,Christian,2,45,1980,Washington,43455,sari.pratama153@outlook.com,780.748.5880,Accountant,No action required.
+1155,Ali Müller,Male,Married,None,0,46,1979,San Francisco,77355,ali.müller_at_gmail.com,(898) 510-6563,Designer,Contact via 212-5559 for details.
+1156,Eka Rossi,Male,Single,Islam,1,31,1994,San Francisco,15000,eka.rossi155@harvard.edu,847.862.1485,Software Engineer,Test record — disregard.
+1157,Eka Rossi,Male,Single,Christian,2,68,1957,New York,55803,eka.rossi156@company.io,+17475481318,Marketing Analyst,Test record — disregard.
+1158,Maria Garcia,Female,Married,Christian,0,48,1977,Dallas,74904,maria.garcia157@outlook.com,978-984-4750,Teacher,Meeting scheduled. Ping me on 303-5551 if needed.
+1159,Arif Kim,Male,Married,None,5,25,2000,Los Angeles,21737,arif.kim158@outlook.com,+13807670644,Developer,No action required.
+1160,Budi Rossi,Male,Single,Other,0,51,1974,Washington,91955,budi.rossi159@work.co.uk,+18763954896,Data Scientist,All good.
+1161,Arif Müller,Male,Married,Islam,2,28,1997,Phoenix,59051,arif.müller160@company.io,+13098455886,Marketing Analyst,All good.
+1162,Elena Garcia,Female,Divorced,Buddhist,2,53,1972,Washington,39010,elena.garcia161@company.io,286-847-7175,Sales Representative,No action required.
+1163, Michael  Nguyen ,Male,Single,Christian,5,58,1967,Dallas,69426,.michael..nguyen.162@mit.edu,(343) 236-3163,Professor,Meeting scheduled. Ping me on 303-5551 if needed.
+1164,Ayu Pratama,Female,Married,None,2,30,1995,San Diego,170908,ayu.pratama163@mit.edu,+19378073907,Designer,Sent invoice #00163 on 2024-03-12.
+1165,Chiara Smith,Female,Divorced,Christian,1,55,1970,Washington,54177,chiara.smith_at_gmail.com,598.264.8856,Product Manager,Test record — disregard.
+1166,James Müller,Male,Married,Christian,1,47,1978,Denver,56191,james.müller165@outlook.com,(711) 746-7361,Developer,Prefers email over calls.
+1167,Eka Tanaka,Male,Married,Islam,2,53,1972,San Diego,38076,eka.tanaka166@gmail.com,237.547.0918,Physician,Follow up 555-0198 next week.
+1168,Sari Johnson,Female,Single,Islam,5,68,1957,Chicago,30717,sari.johnson167@tum.de,(938) 243-6643,Electrician,Sent invoice #00167 on 2024-03-12.
+1169,Eka Rossi,Male,Married,Other,0,38,1987,Los Angeles,77395,eka.rossi168@mit.edu,+14168698570,Accountant,Test record — disregard.
+1170,Eka Johnson,Male,Married,Christian,0,31,1994,Chicago,30612,eka.johnson169@company.io,894-749-2440,Machine Learning Engineer,All good.
+1171,Ayu60 Hidayat,Female,Divorced,Hindu,3,29,1996,San Antonio,50988,ayu60.hidayat170@company.io,+12732372319,Product Manager,Contact via 212-5559 for details.
+1172,Sari Pratama,Female,Married,Hindu,1,30,1995,Houston,37695,sari.pratama171@ugm.ac.id,(869) 219-7720,Product Manager,No action required.
+1173,Carlos Smith,Male,Married,Christian,3,40,1985,Chicago,63795,carlos.smith172@yahoo.com,(448) 918-2138,Developer,Meeting scheduled. Ping me on 303-5551 if needed.
+1174,JANE GARCIA,Female,Single,Islam,2,46,1979,Seattle,58895,jane.garcia173@work.co.uk,376.847.0818,Nurse,Contact via 212-5559 for details.
+1175,Nia Rossi,Female,Married,Other,3,45,1980,Seattle,86737,nia.rossi174@mit.edu,(299) 667-2796,Teacher,All good.
+1176,Ali36 Tanaka,Male,Divorced,Islam,3,53,1972,Dallas,37030,ali36.tanaka175@mit.edu,308-316-8145,Data Scientist,Prefers email over calls.
+1177,Satoshi Pratama,Male,Single,Islam,1,42,1983,Seattle,42258,satoshi.pratama176@outlook.com,264.407.6983,Nurse,All good.
+1178,JOHN ANDERSON,Male,Married,Christian,0,62,1963,Chicago,28614,john.anderson177@tum.de,955.894.6586,Physician,Sent invoice #00177 on 2024-03-12.
+1179,Satoshi Nguyen,Male,Married,Islam,2,38,1987,Denver,38393,satoshi.nguyen178@work.co.uk,323-900-9436,Physician,No action required.
+1180,ANDI PATEL,Male,Divorced,Other,3,80,1945,San Francisco,60325,andi.patel179@outlook.com,529-418-0746,Machine Learning Engineer,Prefers email over calls.
+1181,Nia36 Johnson,Female,Married,Islam,0,50,1975,Denver,74335,nia36.johnson_at_gmail.com,543.264.1978,Developer,Sent invoice #00180 on 2024-03-12.
+1182,Sari Tanaka,Female,Single,Islam,3,29,1996,San Diego,29519,sari.tanaka181@yahoo.com,344-975-6801,Software Engineer,No action required.
+1183,Arif Hidayat,Nonbinary,Married,None,1,27,1998,Los Angeles,79085,arif.hidayat182@tum.de,913-578-9067,Software Engineer,Prefers email over calls.
+1184,James Johnson,Male,Single,Christian,2,48,1977,Boston,103321,james.johnson183@outlook.com,(649) 449-9535,Researcher,Prefers email over calls.
+1185,Budi Pratama,Male,Single,Islam,2,38,1987,Chicago,61536,budi.pratama_at_gmail.com,336-302-6162,Developer,Prefers email over calls.
+1186,Arif90 Rossi,Male,Single,None,3,51,1974,Chicago,137618,arif90.rossi185@tum.de,(216) 698-1322,Marketing Analyst,Test record — disregard.
+1187,Ayu Rossi,Female,Married,Islam,0,48,1977,Phoenix,32029,ayu.rossi186@gmail.com,207.383.1460,Data Scientist,All good.
+1188,Carlos Patel,Male,Single,Other,3,40,1985,Houston,24721,carlos.patel187@outlook.com,626-910-7798,Accountant,Follow up 555-0198 next week.
+1189,JOHN ROSSI,Male,Married,Islam,1,30,1995,Houston,18429,john.rossi_at_gmail.com,+14113464439,Teacher,Test record — disregard.
+1190,Andi Johnson,Male,Married,Islam,0,20,2005,Houston,111616,andi.johnson189@tum.de,(621) 444-2859,Machine Learning Engineer,No action required.
+1191,Arif76 Smith,Male,Single,Islam,0,35,1990,Seattle,70256,arif76.smith190@mit.edu,(810) 384-8190,Software Engineer,Follow up 555-0198 next week.
+1192,Budi Hidayat,Male,Married,Islam,0,53,1972,Washington,47544,budi.hidayat191@yahoo.com,+18425085699,Developer,Meeting scheduled. Ping me on 303-5551 if needed.
+1193,Arif Nguyen,Male,Single,Hindu,0,44,1981,Phoenix,57181,arif.nguyen192@ugm.ac.id,204-771-3860,Developer,Meeting scheduled. Ping me on 303-5551 if needed.
+1194,Emily Kim,Female,Married,Islam,4,24,2001,Boston,26396,emily.kim193@gmail.com,320.742.1567,Product Manager,All good.
+1195,Carlos Anderson,Male,Single,Islam,2,44,1981,New York,188181,carlos.anderson194@yahoo.com,979-752-8315,Electrician,All good.
+1196,Nia Kim,Female,Married,Other,5,47,1978,Austin,52631,nia.kim195@tum.de,675.988.3409,Product Manager,Prefers email over calls.
+1197,Emily Nguyen,Female,Single,Islam,2,29,1996,Boston,52060,emily.nguyen196@harvard.edu,254-398-1846,Developer,No action required.
+1198,Andi Müller,Male,Married,Christian,0,44,1981,New York,73069,andi.müller197@company.io,901-685-8151,Software Engineer,Prefers email over calls.
+1199,Arif Rossi,Nonbinary,Single,Islam,3,42,1983,Los Angeles,63866,arif.rossi198@mit.edu,(363) 886-0706,Researcher,Follow up 555-0198 next week.
+1200,Nia Hidayat,Female,Married,Islam,0,25,2000,Phoenix,55444,nia.hidayat199@stanford.edu,860-572-4670,Professor,Prefers email over calls.
+1201,Carlos Kim,Nonbinary,Married,Jewish,1,47,1978,San Antonio,31737,carlos.kim200@ugm.ac.id,+16454575477,Carpenter,Follow up 555-0198 next week.
+1202,Linda Nguyen,Female,Married,Christian,3,49,1976,San Diego,63532,linda.nguyen201@mit.edu,244-306-0859,Machine Learning Engineer,No action required.
+1203,Sari Garcia,Female,Married,Jewish,4,57,1968,San Francisco,138014,sari.garcia202@stanford.edu,(361) 229-7947,Accountant,Follow up 555-0198 next week.
+1204,Eka50 Nguyen,Male,Married,Christian,1,56,1969,Boston,102742,eka50.nguyen_at_gmail.com,272.440.7287,Marketing Analyst,Contact via 212-5559 for details.
+1205,Elena Nguyen,Female,Single,Other,0,22,2003,Phoenix,117742,elena.nguyen_at_gmail.com,629-403-5336,Marketing Analyst,Prefers email over calls.
+1206,Satoshi Kim,Male,Single,Christian,1,28,1997,Los Angeles,37005,satoshi.kim205@work.co.uk,997-312-5343,Electrician,Prefers email over calls.
+1207,Andi Anderson,Male,Married,Islam,4,49,1976,San Francisco,28444,andi.anderson206@stanford.edu,300-442-6759,Machine Learning Engineer,Contact via 212-5559 for details.
+1208,James34 Garcia,Male,Married,Christian,3,49,1976,Phoenix,45744,james34.garcia207@work.co.uk,+15844251204,Teacher,All good.
+1209,Eka Hidayat,Male,Married,None,4,49,1976,Austin,50546,eka.hidayat208@gmail.com,+17996960890,Sales Representative,All good.
+1210,Budi Patel,Nonbinary,Single,Islam,1,85,1940,Houston,89483,budi.patel_at_gmail.com,+13484219984,Physician,Follow up 555-0198 next week.
+1211,Andi Tanaka,Male,Widowed,Other,5,49,1976,Chicago,19324,andi.tanaka210@yahoo.com,382-596-6119,Physician,Contact via 212-5559 for details.
+1212,Nia Müller,Female,Single,None,1,57,1968,Chicago,113692,nia.müller211@company.io,668.937.3181,Marketing Analyst,No action required.
+1213,John Müller,Male,Married,Christian,1,55,1970,Seattle,44940,john.müller212@tum.de,476-407-5503,Marketing Analyst,Prefers email over calls.
+1214,MICHAEL ANDERSON,Male,Married,Christian,4,51,1974,Austin,38762,yahoocom,(232) 908-9317,Machine Learning Engineer,Test record — disregard.
+1215,Nia Patel,Female,Married,None,2,37,1988,San Antonio,28094,nia.patel214@gmail.com,+14873391820,Sales Representative,Sent invoice #00214 on 2024-03-12.
+1216,Maria Hidayat,Nonbinary,Married,Islam,3,52,1973,Dallas,19728,maria.hidayat215@mit.edu,669.628.2804,Marketing Analyst,Test record — disregard.
+1217,Maria22 Hidayat,Female,Married,Christian,3,31,1994,San Diego,77091,maria22.hidayat216@work.co.uk,425-502-9889,Product Manager,All good.
+1218,Emily Hidayat,Female,Married,Christian,0,38,1987,Dallas,51037,emily.hidayat217@tum.de,853-826-2784,Professor,Prefers email over calls.
+1219,Carlos Tanaka,Male,Single,Buddhist,2,35,1990,Austin,24113,carlos.tanaka218@company.io,+12886218548,Software Engineer,Sent invoice #00218 on 2024-03-12.
+1220,Satoshi Pratama,Male,Married,Christian,3,43,1982,Houston,24045,satoshi.pratama219@tum.de,+14218057757,Electrician,Contact via 212-5559 for details.
+1221,Eka Garcia,Nonbinary,Widowed,None,2,74,1951,Houston,40754,eka.garcia220@harvard.edu,485-214-7014,Marketing Analyst,Meeting scheduled. Ping me on 303-5551 if needed.
+1222,Nia Smith,Female,Single,Islam,1,18,2007,Seattle,122756,nia.smith221@company.io,453-535-7114,Accountant,Follow up 555-0198 next week.
+1223,Ayu Patel,Female,Single,Islam,0,51,1974,San Francisco,42498,ayu.patel222@gmail.com,(805) 352-9399,Marketing Analyst,All good.
+1224,Sari Müller,Female,Married,Hindu,2,19,2006,Los Angeles,21445,sari.müller223@work.co.uk,+16272450656,Developer,Prefers email over calls.
+1225,Carlos Rossi,Male,Divorced,Islam,1,35,1990,San Antonio,42823,carlos.rossi224@company.io,(951) 987-8261,Designer,No action required.
+1226,Sari Patel,Female,Married,Islam,2,57,1968,Boston,42192,sari.patel225@tum.de,+16357436460,Data Scientist,Contact via 212-5559 for details.
+1227,Nia Pratama,Female,Divorced,Hindu,1,42,1983,Los Angeles,15000,nia.pratama226@mit.edu,+19133007412,Accountant,Sent invoice #00226 on 2024-03-12.
+1228,Jane Johnson,Female,Single,Christian,2,26,1999,Dallas,47578,jane.johnson227@yahoo.com,(446) 285-9150,Machine Learning Engineer,Meeting scheduled. Ping me on 303-5551 if needed.
+1229,Satoshi Johnson,Male,Married,Christian,1,31,1994,New York,43173,satoshi.johnson228@gmail.com,909-949-6662,Electrician,Contact via 212-5559 for details.
+1230,Ali Kim,Nonbinary,Married,None,0,51,1974,Dallas,71891,ali.kim229@gmail.com,335-567-4846,Physician,All good.
+1231,Satoshi Patel,Male,Married,Christian,4,31,1994,San Diego,135526,satoshi.patel230@yahoo.com,+18632920260,Marketing Analyst,No action required.
+1232,Carlos Smith,Male,Married,Christian,1,45,1980,Dallas,91090,carlos.smith_at_gmail.com,+18855122650,Physician,Follow up 555-0198 next week.
+1233,Fatima Hidayat,Female,Divorced,Hindu,5,42,1983,Chicago,42281,fatima.hidayat232@tum.de,(784) 965-9562,Physician,Follow up 555-0198 next week.
+1234,Linda Hidayat,Female,Married,Islam,0,32,1993,Phoenix,26673,linda.hidayat233@mit.edu,+16656742271,Developer,Contact via 212-5559 for details.
+1235,Ali Kim,Male,Single,Buddhist,5,72,1953,San Diego,201863,ali.kim_at_gmail.com,(389) 579-7607,Data Scientist,Sent invoice #00234 on 2024-03-12.
+1236,Andi Rossi,Male,Married,Other,4,50,1975,Los Angeles,50643,andi.rossi235@gmail.com,842.272.6305,Researcher,Contact via 212-5559 for details.
+1237,Nia Rossi,Female,Married,Hindu,0,18,2007,Houston,49397,nia.rossi236@tum.de,+17432334859,Software Engineer,Prefers email over calls.
+1238,Arif Nguyen,Male,Single,Other,2,44,1981,Dallas,48374,arif.nguyen237@tum.de,970-476-8887,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1239,Ayu Smith,Female,Married,Buddhist,1,32,1993,Los Angeles,54663,ayu.smith238@company.io,(901) 282-5500,Accountant,Follow up 555-0198 next week.
+1240,Elena Nguyen,Female,Married,Islam,3,53,1972,San Diego,45279,elena.nguyen239@harvard.edu,(727) 890-5963,Nurse,All good.
+1241,Michael Nguyen,Male,Single,Christian,2,30,1995,Denver,35756,michael.nguyen240@work.co.uk,+13135925989,Developer,Contact via 212-5559 for details.
+1242,Fatima Rossi,Female,Married,Islam,5,40,1985,San Antonio,36287,fatima.rossi241@yahoo.com,833.241.5989,Designer,All good.
+1243,Fatima Nguyen,Female,Widowed,Christian,0,49,1976,San Diego,48145,fatima.nguyen242@stanford.edu,(379) 863-9155,Professor,Meeting scheduled. Ping me on 303-5551 if needed.
+1244,Sari Patel,Female,Married,Christian,2,54,1971,San Antonio,36356,sari.patel243@stanford.edu,774-926-3354,Sales Representative,Follow up 555-0198 next week.
+1245,Satoshi Pratama,Male,Single,Christian,3,25,2000,New York,33121,satoshi.pratama244@company.io,(542) 444-8841,Professor,Meeting scheduled. Ping me on 303-5551 if needed.
+1246,Jane Johnson,Female,Single,Islam,0,37,1988,San Antonio,51975,jane.johnson245@outlook.com,864-689-9504,Software Engineer,Test record — disregard.
+1247,James47 Tanaka,Male,Single,Christian,0,35,1990,Denver,42606,james47.tanaka246@yahoo.com,971.962.3693,Researcher,Contact via 212-5559 for details.
+1248,John Garcia,Male,Married,Hindu,3,32,1993,Boston,112105,john.garcia247@tum.de,+15614738250,Physician,Follow up 555-0198 next week.
+1249,Linda48 Anderson,Female,Single,Christian,1,66,1959,Philadelphia,15000,linda48.anderson248@yahoo.com,483.255.1038,Electrician,Test record — disregard.
+1250,Carlos Rossi,Male,Married,Islam,1,47,1978,Denver,89351,carlos.rossi249@ugm.ac.id,(553) 663-7966,Designer,All good.
+1251,Ali Kim,Male,Married,None,2,24,2001,Seattle,97279,ali.kim250@company.io,681.926.8714,Product Manager,Sent invoice #00250 on 2024-03-12.
+1252,Linda7 Garcia,Female,Divorced,Islam,2,54,1971,Dallas,15672,linda7.garcia251@harvard.edu,(662) 835-6031,Carpenter,Sent invoice #00251 on 2024-03-12.
+1253,Budi Rossi,Male,Widowed,Other,2,71,1954,New York,40599,budi.rossi252@harvard.edu,(392) 668-1430,Software Engineer,All good.
+1254,John Anderson,Male,Married,Islam,4,56,1969,Philadelphia,39962,john.anderson253@ugm.ac.id,(600) 383-4724,Product Manager,Contact via 212-5559 for details.
+1255,James Tanaka,Nonbinary,Single,Islam,1,20,2005,New York,22603,james.tanaka254@stanford.edu,(311) 368-4521,Product Manager,Contact via 212-5559 for details.
+1256,James Johnson,Nonbinary,Single,Jewish,3,35,1990,Washington,31958,james.johnson255@company.io,913-351-8131,Accountant,No action required.
+1257,Michael Müller,Male,Single,Other,2,59,1966,Washington,26613,michael.müller256@tum.de,409.733.0371,Nurse,Prefers email over calls.
+1258,John Tanaka,Male,Divorced,Christian,2,32,1993,Los Angeles,128508,john.tanaka257@gmail.com,626-898-8870,Accountant,Sent invoice #00257 on 2024-03-12.
+1259,Andi85 Hidayat,Male,Married,Christian,1,48,1977,Washington,82012,andi85.hidayat258@company.io,+16855556883,Data Scientist,Meeting scheduled. Ping me on 303-5551 if needed.
+1260,Ayu Patel,Female,Married,Christian,2,52,1973,New York,98652,ayu.patel259@gmail.com,955.860.0351,Sales Representative,All good.
+1261,Linda36 Tanaka,Female,Single,Christian,0,29,1996,San Antonio,72905,linda36.tanaka260@harvard.edu,393-264-0361,Physician,Sent invoice #00260 on 2024-03-12.
+1262,Ayu Garcia,Female,Married,Islam,0,41,1984,Seattle,26344,ayu.garcia_at_gmail.com,+17328605503,Teacher,All good.
+1263,Michael Johnson,Male,Married,Christian,3,18,2007,Seattle,36736,michael.johnson262@mit.edu,+17925515346,Nurse,Test record — disregard.
+1264,Andi Müller,Male,Married,Hindu,1,27,1998,Washington,64161,andi.müller263@work.co.uk,+18078818686,Electrician,Meeting scheduled. Ping me on 303-5551 if needed.
+1265,Elena Garcia,Female,Married,Jewish,1,38,1987,Austin,25029,elena.garcia264@gmail.com,668-511-9293,Accountant,No action required.
+1266,Sari Rossi,Female,Married,None,2,24,2001,San Antonio,72558,sari.rossi265@mit.edu,513-375-4259,Electrician,Prefers email over calls.
+1267,Maria Anderson,Female,Single,Buddhist,0,64,1961,Washington,42951,maria.anderson266@stanford.edu,(695) 580-4720,Teacher,Prefers email over calls.
+1268,Linda Patel,Nonbinary,Married,None,0,21,2004,Philadelphia,39888,linda.patel267@work.co.uk,+13515614659,Nurse,Meeting scheduled. Ping me on 303-5551 if needed.
+1269,Chiara Pratama,Female,Married,Hindu,1,35,1990,San Francisco,72477,chiara.pratama268@yahoo.com,370.833.2634,Physician,Meeting scheduled. Ping me on 303-5551 if needed.
+1270,Ali Pratama,Male,Single,Christian,5,43,1982,San Francisco,62588,ali.pratama269@outlook.com,386-379-2514,Carpenter,Follow up 555-0198 next week.
+1271,Maria Kim,Female,Single,Christian,0,62,1963,Philadelphia,40193,maria.kim270@work.co.uk,443.319.0674,Teacher,Prefers email over calls.
+1272,Arif Kim,Male,Married,Islam,4,21,2004,Boston,92747,arif.kim271@mit.edu,788.329.7223,Machine Learning Engineer,No action required.
+1273,Elena Smith,Female,Single,Hindu,1,58,1967,Austin,27049,elena.smith_at_gmail.com,(578) 388-3361,Carpenter,Test record — disregard.
+1274,Linda Tanaka,Female,Divorced,Islam,0,42,1983,Dallas,68786,linda.tanaka273@gmail.com,881-524-5633,Researcher,Sent invoice #00273 on 2024-03-12.
+1275,Satoshi Patel,Male,Single,Islam,4,28,1997,Austin,67928,satoshi.patel274@ugm.ac.id,581-659-8845,Physician,Test record — disregard.
+1276,Budi Johnson,Male,Single,Other,1,48,1977,Philadelphia,41346,budi.johnson275@stanford.edu,(746) 508-1990,Product Manager,Meeting scheduled. Ping me on 303-5551 if needed.
+1277,Carlos Pratama,Male,Single,Christian,4,44,1981,Chicago,58651,carlos.pratama276@gmail.com,+16147112381,Sales Representative,All good.
+1278,Elena Kim,Female,Divorced,Other,1,33,1992,Dallas,24634,elena.kim277@gmail.com,527.359.0070,Accountant,Prefers email over calls.
+1279,James Tanaka,Male,Married,Christian,0,42,1983,San Diego,81488,james.tanaka278@company.io,+18629224842,Electrician,Prefers email over calls.
+1280,Jane Tanaka,Female,Single,Other,2,36,1989,Boston,44280,jane.tanaka279@stanford.edu,496-972-9399,Researcher,Contact via 212-5559 for details.
+1281,Fatima Anderson,Female,Single,Other,3,43,1982,Houston,36772,fatima.anderson280@ugm.ac.id,778.946.7243,Carpenter,Test record — disregard.
+1282,James Smith,Male,Divorced,None,1,51,1974,New York,87286,james.smith281@work.co.uk,(905) 315-7847,Designer,Prefers email over calls.
+1283,Ayu Patel,Female,Single,Other,1,64,1961,New York,33276,ayu.patel282@mit.edu,(342) 894-9026,Accountant,Test record — disregard.
+1284,John Johnson,Male,Married,Hindu,0,24,2001,Phoenix,22591,john.johnson283@harvard.edu,515-225-6580,Marketing Analyst,Test record — disregard.
+1285,Fatima Patel,Female,Married,Hindu,2,71,1954,Boston,20823,fatima.patel284@gmail.com,656.565.1515,Software Engineer,Prefers email over calls.
+1286,Emily Garcia,Female,Married,Islam,4,18,2007,Dallas,68412,emily.garcia285@ugm.ac.id,256-822-3197,Product Manager,No action required.
+1287,Fatima Anderson,Female,Single,None,4,39,1986,San Diego,24240,fatima.anderson286@outlook.com,(985) 484-3206,Accountant,No action required.
+1288,Arif Johnson,Male,Single,Other,3,50,1975,Denver,128686,arif.johnson287@stanford.edu,(285) 751-7298,Product Manager,No action required.
+1289,James Johnson,Male,Married,Islam,4,45,1980,Houston,15598,james.johnson288@stanford.edu,+17246033185,Accountant,Test record — disregard.
+1290,James Rossi,Male,Married,Islam,2,33,1992,Philadelphia,124623,james.rossi289@company.io,(525) 817-9913,Data Scientist,Test record — disregard.
+1291,James Müller,Male,Single,Buddhist,3,39,1986,Phoenix,55053,james.müller290@ugm.ac.id,882-569-6513,Carpenter,No action required.
+1292,Sari Rossi,Female,Single,Christian,2,35,1990,Washington,46481,sari.rossi291@yahoo.com,+19336376056,Accountant,Meeting scheduled. Ping me on 303-5551 if needed.
+1293,Sari Smith,Female,Divorced,Christian,0,33,1992,Boston,36326,sari.smith292@harvard.edu,581.212.4663,Accountant,Sent invoice #00292 on 2024-03-12.
+1294,Ali Garcia,Male,Single,Islam,0,53,1972,Los Angeles,61054,ali.garcia293@work.co.uk,(559) 515-7300,Electrician,Test record — disregard.
+1295,Sari Garcia,Female,Married,None,0,46,1979,Denver,48016,sari.garcia294@outlook.com,+14209457278,Researcher,Test record — disregard.
+1296,Nia Rossi,Female,Married,Christian,3,32,1993,San Antonio,89932,nia.rossi295@tum.de,+16534952683,Accountant,Follow up 555-0198 next week.
+1297,Ali Nguyen,Male,Married,Christian,0,54,1971,Seattle,52199,ali.nguyen296@stanford.edu,(946) 624-2286,Data Scientist,No action required.
+1298,Carlos Johnson,Male,Married,Islam,2,46,1979,San Francisco,53245,carlos.johnson297@yahoo.com,+13474124968,Sales Representative,All good.
+1299,JOHN KIM,Male,Married,Hindu,1,53,1972,New York,40135,john.kim298@work.co.uk,+17375431083,Product Manager,Meeting scheduled. Ping me on 303-5551 if needed.
+1300,Elena Johnson,Female,Married,Islam,3,50,1975,Houston,47509,elena.johnson299@mit.edu,290.206.6708,Nurse,Prefers email over calls.
+1301,Sari Anderson,Female,Married,Jewish,2,30,1995,Los Angeles,58063,sari.anderson_at_gmail.com,+16243799106,Marketing Analyst,Meeting scheduled. Ping me on 303-5551 if needed.
+1302,Elena Pratama,Female,Widowed,Islam,2,34,1991,New York,19137,elena.pratama301@tum.de,927-781-2243,Teacher,Meeting scheduled. Ping me on 303-5551 if needed.
+1303,Linda Garcia,Female,Single,Christian,0,52,1973,Dallas,23353,linda.garcia302@company.io,+13905904742,Machine Learning Engineer,All good.
+1304,Emily23 Tanaka,Female,Single,Christian,1,50,1975,Boston,73776,emily23.tanaka303@mit.edu,243.509.9588,Sales Representative,Contact via 212-5559 for details.
+1305,James Garcia,Male,Widowed,Christian,5,41,1984,New York,53850,james.garcia304@outlook.com,705-772-7593,Machine Learning Engineer,Follow up 555-0198 next week.
+1306,EKA HIDAYAT,Male,Widowed,Buddhist,3,43,1982,Seattle,44303,eka.hidayat305@ugm.ac.id,227.202.2523,Developer,No action required.
+1307,Budi Anderson,Male,Single,Other,2,59,1966,San Antonio,49520,budi.anderson306@gmail.com,(507) 855-7742,Designer,Meeting scheduled. Ping me on 303-5551 if needed.
+1308,Nia Garcia,Female,Married,Christian,3,33,1992,Houston,59347,nia.garcia307@stanford.edu,+18698814713,Marketing Analyst,All good.
+1309,Jane Hidayat,Female,Married,Islam,3,49,1976,Houston,36429,jane.hidayat308@gmail.com,(383) 703-4009,Electrician,Contact via 212-5559 for details.
+1310,Fatima Nguyen,Female,Single,Islam,0,39,1986,Denver,31950,fatima.nguyen309@yahoo.com,+13229834541,Software Engineer,All good.
+1311,Jane Hidayat,Female,Married,Islam,5,38,1987,New York,54595,jane.hidayat310@harvard.edu,+12688135927,Professor,Contact via 212-5559 for details.
+1312,Budi Hidayat,Male,Single,Hindu,2,57,1968,San Diego,28620,,+17796464225,Product Manager,Contact via 212-5559 for details.
+1313,Carlos Pratama,Male,Divorced,Hindu,1,53,1972,Phoenix,61361,carlos.pratama312@company.io,(910) 322-6114,Carpenter,Test record — disregard.
+1314,Budi Tanaka,Male,Married,Islam,2,53,1972,Denver,19217,budi.tanaka313@harvard.edu,(465) 366-9529,Marketing Analyst,Follow up 555-0198 next week.
+1315,Sari Hidayat,Female,Single,Hindu,1,60,1965,Boston,86338,sari.hidayat314@yahoo.com,349-527-7553,Accountant,No action required.
+1316,Chiara Nguyen,Female,Single,Christian,4,42,1983,Phoenix,63572,chiara.nguyen315@tum.de,565.367.0866,Data Scientist,No action required.
+1317,Arif Patel,Male,Married,Christian,3,51,1974,Dallas,56433,arif.patel316@gmail.com,(569) 629-5832,Nurse,Prefers email over calls.
+1318,Maria Tanaka,Female,Married,Islam,2,37,1988,Boston,84160,maria.tanaka317@harvard.edu,(496) 498-8677,Teacher,Follow up 555-0198 next week.
+1319,Ali83 Rossi,Male,Married,Jewish,0,46,1979,Phoenix,122517,ali83.rossi318@gmail.com,(726) 398-3002,Electrician,Contact via 212-5559 for details.
+1320,Jane Patel,Female,Married,Islam,5,40,1985,Phoenix,85639,jane.patel319@mit.edu,813.970.2738,Data Scientist,Contact via 212-5559 for details.
+1321,Linda Tanaka,Female,Single,Christian,1,43,1982,Chicago,17810,linda.tanaka320@company.io,523.901.4932,Nurse,Sent invoice #00320 on 2024-03-12.
+1322,Fatima Johnson,Nonbinary,Divorced,Islam,4,50,1975,Austin,24251,fatima.johnson321@mit.edu,(901) 914-5939,Carpenter,No action required.
+1323,Linda Tanaka,Female,Married,Hindu,0,30,1995,Houston,34764,linda.tanaka322@gmail.com,747-793-5761,Data Scientist,Test record — disregard.
+1324,Elena Tanaka,Female,Single,Christian,0,71,1954,Phoenix,49729,elena.tanaka323@stanford.edu,213.340.8489,Nurse,Follow up 555-0198 next week.
+1325, James  Hidayat ,Male,Married,Hindu,0,27,1998,New York,65167,.james..hidayat.324@outlook.com,+15819977944,Software Engineer,Meeting scheduled. Ping me on 303-5551 if needed.
+1326,Chiara Smith,Female,Divorced,Islam,0,25,2000,Washington,32887,chiara.smith325@work.co.uk,548-366-1678,Accountant,All good.
+1327,Michael Patel,Male,Single,Christian,1,58,1967,San Francisco,54324,michael.patel326@ugm.ac.id,358-715-3622,Sales Representative,Meeting scheduled. Ping me on 303-5551 if needed.
+1328,Ayu Kim,Female,Single,Christian,3,53,1972,San Francisco,32355,ayu.kim327@mit.edu,(772) 828-8612,Accountant,Follow up 555-0198 next week.
+1329,Ayu Patel,Female,Married,Islam,1,50,1975,Austin,35019,ayu.patel328@company.io,(627) 671-1251,Designer,Prefers email over calls.
+1330,Ayu Nguyen,Female,Married,Christian,4,50,1975,San Antonio,22614,ayu.nguyen329@work.co.uk,334.217.7856,Teacher,Test record — disregard.
+1331,Sari Kim,Female,Married,Islam,4,41,1984,San Diego,29502,sari.kim330@outlook.com,519-907-5940,Designer,Contact via 212-5559 for details.
+1332,Ali Patel,Male,Widowed,Islam,3,29,1996,Washington,23308,ali.patel331@company.io,652.811.8570,Nurse,Test record — disregard.
+1333,Elena Pratama,Female,Married,Islam,0,43,1982,Washington,28660,elena.pratama332@outlook.com,(376) 926-4991,Software Engineer,All good.
+1334,Michael Rossi,Male,Single,Christian,2,32,1993,Boston,87509,michael.rossi333@outlook.com,962-321-3643,Developer,Prefers email over calls.
+1335,Maria Tanaka,Female,Widowed,Islam,2,55,1970,Seattle,29080,maria.tanaka334@yahoo.com,910.345.3712,Accountant,Test record — disregard.
+1336,Fatima Smith,Female,Single,Jewish,0,39,1986,Phoenix,208524,fatima.smith335@outlook.com,(328) 414-2133,Electrician,No action required.
+1337,Carlos Tanaka,Male,Single,Islam,1,30,1995,San Antonio,64300,carlos.tanaka336@ugm.ac.id,(635) 907-1830,Electrician,No action required.
+1338, Elena  Smith ,Female,Married,Christian,2,37,1988,Chicago,54266,.elena..smith.337@mit.edu,+12199937934,Carpenter,Test record — disregard.
+1339,Satoshi Rossi,Male,Married,Buddhist,2,47,1978,Philadelphia,30573,satoshi.rossi338@outlook.com,(243) 401-1766,Professor,Test record — disregard.
+1340,Budi Nguyen,Male,Married,Christian,0,34,1991,Seattle,72053,budi.nguyen339@work.co.uk,(875) 725-9718,Product Manager,Test record — disregard.
+1341,Fatima Anderson,Female,Single,Other,4,30,1995,San Diego,35717,fatima.anderson340@work.co.uk,(680) 321-4145,Machine Learning Engineer,No action required.
+1342,Satoshi Müller,Male,Single,Other,0,45,1980,Denver,52423,satoshi.müller341@gmail.com,(267) 508-0168,Professor,All good.
+1343,Michael Müller,Male,Single,Islam,2,45,1980,Phoenix,200395,michael.müller342@tum.de,326-816-3365,Teacher,Meeting scheduled. Ping me on 303-5551 if needed.
+1344,Budi Pratama,Male,Married,None,3,34,1991,Boston,46498,budi.pratama343@tum.de,(389) 886-5759,Professor,Prefers email over calls.
+1345,Michael Nguyen,Male,Single,Islam,2,35,1990,Denver,92235,michael.nguyen344@ugm.ac.id,292.349.4544,Sales Representative,Prefers email over calls.
+1346,Chiara Anderson,Female,Divorced,Islam,3,45,1980,San Francisco,33298,chiara.anderson345@stanford.edu,560-364-8202,Researcher,Sent invoice #00345 on 2024-03-12.
+1347,Linda Anderson,Nonbinary,Married,None,2,21,2004,Dallas,48086,linda.anderson346@gmail.com,(717) 783-1119,Developer,Prefers email over calls.
+1348,Budi Patel,Male,Single,None,3,22,2003,Washington,129824,budi.patel347@stanford.edu,792-981-0229,Data Scientist,All good.
+1349,Ayu Patel,Female,Married,Christian,0,31,1994,Dallas,34723,ayu.patel348@stanford.edu,932-396-4617,Teacher,Follow up 555-0198 next week.
+1350,Satoshi Anderson,Male,Widowed,Christian,0,39,1986,Chicago,132832,satoshi.anderson_at_gmail.com,(972) 750-0070,Marketing Analyst,Test record — disregard.
+1351, Maria  Smith ,Nonbinary,Single,Buddhist,2,46,1979,Houston,72349,.maria..smith.350@work.co.uk,419.716.7777,Professor,Contact via 212-5559 for details.
+1352,Jane Smith,Female,Married,Christian,2,62,1963,Houston,35977,jane.smith351@tum.de,+19148033033,Physician,Meeting scheduled. Ping me on 303-5551 if needed.
+1353,Jane Garcia,Female,Married,Islam,2,54,1971,Austin,69412,jane.garcia352@gmail.com,889.309.2963,Software Engineer,No action required.
+1354, Michael  Johnson ,Male,Single,Islam,3,39,1986,San Francisco,83692,.michael..johnson.353@harvard.edu,588-634-3510,Marketing Analyst,Follow up 555-0198 next week.
+1355,Emily Hidayat,Nonbinary,Single,Christian,1,41,1984,Denver,69009,emily.hidayat354@work.co.uk,(617) 315-5149,Physician,Contact via 212-5559 for details.
+1356,John Nguyen,Male,Married,Other,2,27,1998,Los Angeles,20668,john.nguyen355@gmail.com,677-312-8515,Physician,Meeting scheduled. Ping me on 303-5551 if needed.
+1357,Andi Nguyen,Nonbinary,Widowed,Hindu,1,41,1984,Boston,32862,andi.nguyen356@gmail.com,707.980.5918,Designer,Meeting scheduled. Ping me on 303-5551 if needed.
+1358,Arif96 Patel,Male,Divorced,Other,2,37,1988,Chicago,42781,arif96.patel357@company.io,(770) 939-0665,Electrician,Sent invoice #00357 on 2024-03-12.
+1359,Michael Johnson,Male,Married,None,0,46,1979,Phoenix,47054,michael.johnson358@company.io,+15357051895,Product Manager,Follow up 555-0198 next week.
+1360,John Anderson,Male,Married,Islam,5,30,1995,Boston,68966,john.anderson359@gmail.com,490.667.9836,Teacher,Sent invoice #00359 on 2024-03-12.
+1361,Chiara Nguyen,Female,Single,Other,1,49,1976,Austin,54053,chiara.nguyen360@mit.edu,+19036543700,Professor,Test record — disregard.
+1362,Michael Tanaka,Male,Married,Islam,3,63,1962,San Francisco,23518,michael.tanaka361@outlook.com,(497) 638-3093,Sales Representative,Follow up 555-0198 next week.
+1363,Jane Nguyen,Female,Single,Christian,2,40,1985,Chicago,60422,jane.nguyen362@gmail.com,687-895-6020,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1364,Chiara Garcia,Female,Single,Christian,0,47,1978,Seattle,68584,chiara.garcia363@tum.de,(213) 890-8055,Carpenter,No action required.
+1365,Arif Tanaka,Male,Married,Christian,0,51,1974,Boston,66694,arif.tanaka364@company.io,(605) 648-8563,Developer,Follow up 555-0198 next week.
+1366,Ayu81 Rossi,Female,Single,Christian,0,36,1989,Dallas,88825,ayu81.rossi365@company.io,+13223466468,Nurse,Contact via 212-5559 for details.
+1367,Andi Anderson,Male,Widowed,Christian,1,45,1980,San Diego,77548,andi.anderson366@tum.de,911-804-1666,Data Scientist,Sent invoice #00366 on 2024-03-12.
+1368,Linda Nguyen,Female,Married,Christian,1,42,1983,San Francisco,63104,linda.nguyen_at_gmail.com,266.572.3261,Nurse,Sent invoice #00367 on 2024-03-12.
+1369,Eka Patel,Male,Single,Islam,0,43,1982,Phoenix,47165,eka.patel368@stanford.edu,(405) 809-6623,Marketing Analyst,Test record — disregard.
+1370,Ayu Johnson,Female,Married,Christian,2,31,1994,Washington,19662,ayu.johnson369@harvard.edu,438.634.8177,Accountant,Meeting scheduled. Ping me on 303-5551 if needed.
+1371,Emily Johnson,Female,Divorced,Islam,1,42,1983,New York,62086,emily.johnson370@outlook.com,983.930.9534,Physician,All good.
+1372,Chiara86 Anderson,Female,Single,Christian,3,48,1977,Washington,54952,chiara86.anderson371@yahoo.com,974.859.6557,Teacher,Prefers email over calls.
+1373,Ayu Tanaka,Female,Divorced,None,3,62,1963,Washington,56918,ayu.tanaka372@yahoo.com,+16878829882,Developer,Follow up 555-0198 next week.
+1374,Maria Smith,Female,Divorced,Christian,4,55,1970,Los Angeles,24289,maria.smith373@company.io,696-723-4569,Data Scientist,Test record — disregard.
+1375,EKA MÜLLER,Male,Married,Buddhist,5,72,1953,Washington,27049,eka.müller374@company.io,(986) 665-1770,Physician,Follow up 555-0198 next week.
+1376,Ali Kim,Male,Single,Other,0,31,1994,San Diego,87486,ali.kim375@harvard.edu,456-701-8147,Nurse,All good.
+1377,Emily Anderson,Female,Married,Other,1,54,1971,Houston,47965,emily.anderson376@outlook.com,(843) 337-0486,Product Manager,Prefers email over calls.
+1378,Budi Patel,Male,Divorced,Islam,2,44,1981,Austin,71312,budi.patel377@gmail.com,+19552541117,Designer,No action required.
+1379,John Anderson,Male,Single,Islam,1,72,1953,Houston,49790,john.anderson378@tum.de,+18942272934,Data Scientist,Prefers email over calls.
+1380,Fatima Anderson,Female,Single,Islam,1,30,1995,San Francisco,49829,fatima.anderson379@outlook.com,819-895-5356,Researcher,Follow up 555-0198 next week.
+1381, Sari  Tanaka ,Female,Married,Hindu,0,30,1995,Dallas,82129,yahoocom,(510) 836-1578,Electrician,All good.
+1382,Eka Smith,Male,Married,Other,0,33,1992,Seattle,36907,eka.smith_at_gmail.com,+18769698518,Designer,Prefers email over calls.
+1383,John Garcia,Male,Single,Hindu,0,18,2007,Philadelphia,51682,john.garcia382@gmail.com,+16774064809,Designer,Contact via 212-5559 for details.
+1384,ARIF SMITH,Male,Widowed,Islam,0,34,1991,Dallas,38015,arif.smith383@stanford.edu,702.716.4287,Sales Representative,Meeting scheduled. Ping me on 303-5551 if needed.
+1385,Andi Hidayat,Male,Married,Other,1,31,1994,Philadelphia,38600,andi.hidayat384@ugm.ac.id,(753) 759-0289,Carpenter,Meeting scheduled. Ping me on 303-5551 if needed.
+1386,Eka Kim,Male,Married,Christian,2,44,1981,Houston,41355,eka.kim385@gmail.com,+16403216285,Researcher,Meeting scheduled. Ping me on 303-5551 if needed.
+1387,Michael Rossi,Male,Single,Jewish,0,46,1979,San Diego,55391,michael.rossi386@work.co.uk,+15225857250,Designer,No action required.
+1388,Satoshi21 Anderson,Male,Married,Jewish,4,68,1957,San Diego,37672,satoshi21.anderson387@stanford.edu,236.233.2897,Data Scientist,Contact via 212-5559 for details.
+1389,Chiara Johnson,Female,Single,Christian,0,55,1970,Los Angeles,97798,chiara.johnson_at_gmail.com,+19233688052,Accountant,No action required.
+1390,Chiara Garcia,Female,Single,None,1,33,1992,Washington,29970,chiara.garcia389@gmail.com,+13375196374,Data Scientist,No action required.
+1391,Ayu Smith,Female,Married,Christian,2,29,1996,San Diego,44232,,+19823129320,Professor,Contact via 212-5559 for details.
+1392,Sari Rossi,Female,Married,Hindu,1,48,1977,Denver,38489,sari.rossi391@yahoo.com,+18757678837,Teacher,Meeting scheduled. Ping me on 303-5551 if needed.
+1393,Michael Johnson,Male,Married,Hindu,3,23,2002,San Francisco,108644,michael.johnson_at_gmail.com,(687) 775-2560,Electrician,No action required.
+1394,Fatima Anderson,Female,Single,None,1,67,1958,Philadelphia,54617,fatima.anderson393@mit.edu,+16004698105,Designer,Contact via 212-5559 for details.
+1395,Andi Garcia,Male,Single,Hindu,2,58,1967,San Antonio,86466,andi.garcia394@work.co.uk,831.892.5779,Teacher,Prefers email over calls.
+1396,James Patel,Male,Married,Islam,1,35,1990,Dallas,21653,james.patel395@tum.de,(528) 262-0461,Marketing Analyst,No action required.
+1397,Eka Garcia,Male,Single,Islam,1,18,2007,Houston,56776,eka.garcia396@gmail.com,(331) 575-5715,Physician,Follow up 555-0198 next week.
+1398,Ayu Kim,Female,Married,Christian,0,60,1965,Chicago,79961,ayu.kim397@harvard.edu,+19838405591,Developer,All good.
+1399,Nia Hidayat,Female,Single,Christian,4,40,1985,Houston,51290,nia.hidayat398@ugm.ac.id,299.638.5654,Researcher,No action required.
+1400,Andi Anderson,Male,Single,Islam,2,59,1966,Washington,88081,andi.anderson399@tum.de,621-559-0924,Carpenter,Follow up 555-0198 next week.
+1401,Arif Kim,Male,Single,Islam,5,19,2006,Dallas,36882,arif.kim400@mit.edu,(453) 440-5113,Researcher,Follow up 555-0198 next week.
+1402,John Nguyen,Male,Married,Christian,0,33,1992,San Antonio,106419,john.nguyen401@stanford.edu,(904) 267-4995,Researcher,Contact via 212-5559 for details.
+1403,Budi Anderson,Male,Single,Christian,1,42,1983,Chicago,173580,budi.anderson402@yahoo.com,545.373.0322,Physician,Prefers email over calls.
+1404,Ayu Garcia,Female,Single,Christian,0,42,1983,Phoenix,40152,ayu.garcia403@company.io,+12386716921,Accountant,Meeting scheduled. Ping me on 303-5551 if needed.
+1405,Linda Garcia,Female,Widowed,Islam,1,35,1990,Philadelphia,38367,linda.garcia404@work.co.uk,(473) 220-7695,Sales Representative,All good.
+1406,Michael Nguyen,Male,Married,Other,4,50,1975,Denver,109028,michael.nguyen405@mit.edu,+15245869344,Machine Learning Engineer,No action required.
+1407,James Patel,Male,Married,Islam,2,27,1998,San Diego,116863,james.patel406@mit.edu,+15307861601,Nurse,Prefers email over calls.
+1408,Nia Johnson,Female,Single,None,1,40,1985,Austin,36769,nia.johnson407@harvard.edu,302.907.3373,Developer,All good.
+1409,Chiara Tanaka,Female,Single,Other,2,43,1982,Boston,38905,chiara.tanaka408@tum.de,708-714-5563,Professor,Contact via 212-5559 for details.
+1410,Andi Nguyen,Male,Divorced,Hindu,3,49,1976,Houston,41982,andi.nguyen409@tum.de,+18295065952,Software Engineer,Prefers email over calls.
+1411, Linda  Müller ,Female,Divorced,Christian,1,51,1974,Denver,23401,.linda..müller.410@stanford.edu,406-708-1234,Sales Representative,Meeting scheduled. Ping me on 303-5551 if needed.
+1412,Maria Rossi,Female,Married,Christian,4,26,1999,Washington,29576,maria.rossi411@gmail.com,494.471.0778,Accountant,Follow up 555-0198 next week.
+1413,Jane Pratama,Female,Single,Christian,3,20,2005,Austin,28218,jane.pratama412@yahoo.com,(787) 611-3700,Professor,Sent invoice #00412 on 2024-03-12.
+1414,BUDI NGUYEN,Male,Married,Other,3,59,1966,San Diego,32135,budi.nguyen413@work.co.uk,934.792.1552,Machine Learning Engineer,Sent invoice #00413 on 2024-03-12.
+1415,Carlos48 Johnson,Male,Single,None,1,46,1979,Chicago,48094,carlos48.johnson414@harvard.edu,+14792689280,Software Engineer,Sent invoice #00414 on 2024-03-12.
+1416,John Smith,Male,Married,Christian,1,31,1994,Seattle,55760,john.smith415@stanford.edu,(637) 414-5690,Physician,Test record — disregard.
+1417,SATOSHI TANAKA,Male,Single,Other,2,63,1962,Chicago,115010,satoshi.tanaka_at_gmail.com,867.509.8268,Sales Representative,Prefers email over calls.
+1418,Arif Hidayat,Male,Married,Hindu,0,43,1982,Boston,28308,arif.hidayat417@yahoo.com,643.879.8846,Nurse,Meeting scheduled. Ping me on 303-5551 if needed.
+1419,Emily Rossi,Female,Married,Christian,2,58,1967,San Diego,84235,emily.rossi418@harvard.edu,404.624.6591,Sales Representative,Contact via 212-5559 for details.
+1420,Arif Rossi,Male,Widowed,Christian,0,42,1983,San Francisco,43577,arif.rossi419@harvard.edu,839-727-7425,Professor,Follow up 555-0198 next week.
