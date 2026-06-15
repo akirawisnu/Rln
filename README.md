@@ -73,6 +73,9 @@ lrtm summarize
 
 ▶️ Full demo video: [`media/rln_demo.mp4`](media/rln_demo.mp4)
 
+Desktop Mode
+<img src="media/image - 2026-06-15T224721.380.png"/>
+
 ## Install
 
 ### Android
