@@ -23,8 +23,8 @@ and modeling data — on your laptop **or** your phone. No per-seat licenses, no
 account. Your data never leaves your device.
 
 > ### Dedication
-> *To the scientists and researchers in our field — may powerful tools always be free and within reach.*
-> *And to the one who inspired me to build this for the better.* 🌱
+> *To the scientists and researchers in our field, may powerful tools always be free and within reach.*
+> *And to Marlene, the one who inspired me to build this for the better* 🌱
 >
 > First public release — **14 June 2026**.
 
