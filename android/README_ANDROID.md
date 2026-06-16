@@ -53,7 +53,7 @@ This stages a clean copy of the app + engine on the native WSL filesystem
 `buildozer android debug`. The finished APK lands in:
 
 ```
-~/rln-android/bin/rln-1.2.7-arm64-v8a-debug.apk
+~/rln-android/bin/rln-1.2.8-arm64-v8a-debug.apk
 ```
 
 Copy it back to Windows with:

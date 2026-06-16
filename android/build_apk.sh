@@ -44,6 +44,13 @@ cp -rf "$SRC/rln_io"   "$DEST/rln_io"
 if [ -d "$SRC/examples" ]; then
     rm -rf "$DEST/examples"
     cp -rf "$SRC/examples" "$DEST/examples"
+    # Mobile has no NLP stack (no transformers/torch/argos), so drop the NLP
+    # showcase scripts and their data — the in-app examples then show only what
+    # actually runs on the phone (same set as the lite desktop edition). The full
+    # desktop build keeps these.
+    rm -f "$DEST/examples/nlp_showcase.do" \
+          "$DEST/examples/nlp_extend_showcase.do" \
+          "$DEST/examples/nlp_survey.csv"
 fi
 # Drop bytecode caches so stale .pyc files never ship in the APK.
 find "$DEST" -name '__pycache__' -type d -prune -exec rm -rf {} + 2>/dev/null || true

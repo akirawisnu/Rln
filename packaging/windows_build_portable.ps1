@@ -21,7 +21,7 @@ $Root = (Resolve-Path ".").Path
 $Venv = Join-Path $Root ".venv-build"
 $Python = Join-Path $Venv "Scripts\python.exe"
 $DistDir = Join-Path $Root "dist\rln-$Tier"
-$ZipPath = Join-Path $Root "dist\Rln-v1.2.7-windows-portable-$Tier.zip"
+$ZipPath = Join-Path $Root "dist\Rln-v1.2.8-windows-portable-$Tier.zip"
 
 Write-Host "Rln portable Windows build" -ForegroundColor Cyan
 Write-Host "Root: $Root"
@@ -55,13 +55,18 @@ if (!(Test-Path $DistDir)) {
     throw "Expected output folder not found: $DistDir"
 }
 
-Write-Host "Copying portable model and documentation folders beside the executable..." -ForegroundColor Cyan
-foreach ($folder in @("hf_models", "argos_models", "examples")) {
+Write-Host "Copying documentation (and, for NLP tiers, models) beside the executable..." -ForegroundColor Cyan
+# examples/ is already bundled into _internal by rln.spec (workspace.py finds it
+# via sys._MEIPASS), so don't duplicate it here. The NLP model folders are only
+# useful in offline/full — never copy them into lite.
+$folders = @()
+if ($Tier -ne "lite") { $folders += @("hf_models", "argos_models") }
+foreach ($folder in $folders) {
     if (Test-Path $folder) {
         Copy-Item $folder -Destination $DistDir -Recurse -Force
     }
 }
-foreach ($file in @("README.md", "LICENSE", "Rln_Reference_Manual.docx", "Rln_v1.2.7_release_notes.docx")) {
+foreach ($file in @("README.md", "LICENSE")) {
     if (Test-Path $file) {
         Copy-Item $file -Destination $DistDir -Force
     }

@@ -15,15 +15,25 @@ from commands.expression import eval_condition
 
 
 def _check_statsmodels():
+    """Return a statsmodels-like ``sm`` namespace.
+
+    Prefers real statsmodels. When it can't be imported (notably the Android
+    build, where statsmodels has no working cross-compiled wheel), fall back to
+    Rln's built-in NumPy/SciPy estimators in ``commands.stats_fallback``, which
+    cover regress/logit/probit/poisson with classical, HC1-robust and
+    cluster-robust standard errors and are validated against statsmodels. This
+    keeps the core econometrics working on mobile instead of hard-failing.
+    """
     try:
         import statsmodels.api as sm
         return sm
-    except ImportError as e:
-        raise ImportError(
-            "statsmodels is required for estimation commands.\n"
-            f"(underlying import error: {e})\n"
-            "Install with: ssc install statsmodels"
-        )
+    except Exception:
+        # Any failure to load statsmodels (missing module, or a C-extension that
+        # compiled but won't dlopen on Android) routes to the validated
+        # NumPy/SciPy fallback rather than hard-failing the command.
+        from commands import stats_fallback as sm
+        sm.notify_once()
+        return sm
 
 
 # ──────────────────────────────────────────────

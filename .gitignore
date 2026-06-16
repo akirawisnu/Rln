@@ -41,5 +41,20 @@ Thumbs.db
 /tests/
 /test_*.py
 
-# reference manuals (regenerated separately)
+# Word docs are kept local-only (editable source). The user-facing guides are
+# published as PDF — those are committed (see README "Documentation").
 *.docx
+
+# local docs site build (node_modules etc.)
+/.docbuild/
+
+# Doc build scratch (node_modules, base64 assets, builders)
+.docbuild/
+
+# v1.2.8 release staging (APK/zips — built artifacts)
+/release_v128/
+android/_apk_build_*.log
+packaging/_*_build_*.log
+
+# Claude Code local state
+.claude/

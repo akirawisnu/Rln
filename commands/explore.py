@@ -44,14 +44,67 @@ def _apply_if_in(df: pd.DataFrame, if_cond: str = None, in_range: str = None) ->
     return subset
 
 
+_BROWSE_FILE_EXTS = (".parquet", ".pq", ".csv", ".tsv", ".dta", ".xlsx",
+                     ".xls", ".json", ".feather", ".dbf")
+
+
 def cmd_browse(rest: str, state: AppState, console: Console):
     """
     browse [varlist] [if condition] [in range]
-    Launch interactive TUI data browser.
+    browse "file.parquet"                       — explore a file directly
+
+    Launch the interactive data explorer. Given a data file (parquet, csv,
+    dta, …) it loads a preview and explores it WITHOUT touching the dataset in
+    memory — handy for peeking at a parquet before `use`-ing it.
     """
-    state.require_data()
+    import os
+    import re
+
     parsed = parse_command_line(rest)
 
+    # Detect a file argument: `browse "file.ext"` (quoted) or a bare token that
+    # has a recognised data extension. Column names never have these extensions,
+    # so this won't collide with `browse var1 var2`.
+    file_arg = parsed.get("using")
+    if not file_arg:
+        for cand in list(parsed["varlist"]):
+            if os.path.splitext(cand)[1].lower() in _BROWSE_FILE_EXTS:
+                file_arg = cand
+                break
+    if not file_arg and parsed.get("raw"):
+        m = re.match(r'"(.*?)"|\'(.*?)\'', parsed["raw"].strip())
+        if m:
+            cand = m.group(1) or m.group(2)
+            if os.path.splitext(cand)[1].lower() in _BROWSE_FILE_EXTS:
+                file_arg = cand
+
+    if file_arg:
+        _browse_file(file_arg, state, console)
+        return
+
+    # If nothing is materialized but a parquet/CSV is lazy-loaded via `lrtm use`,
+    # explore a streamed preview — the full dataset is available after
+    # `lrtm collect`. Mirrors the GUI/Android data browser behaviour.
+    if not state.has_data():
+        try:
+            from commands.lrtm import lrtm_preview
+            prev = lrtm_preview(state, 5000)
+        except Exception:
+            prev = None
+        if prev:
+            view, total = prev
+            note = (f"first {len(view):,} of {total:,} rows"
+                    if isinstance(total, int) else f"first {len(view):,} rows")
+            console.print(f"[dim]LRTM preview ({note}); run 'lrtm collect' to "
+                          f"explore the full dataset.[/dim]")
+            try:
+                from tui.browser import launch_browser
+                launch_browser(view, state)
+            except ImportError:
+                _display_rich_table(view, state, console, max_rows=50)
+            return
+
+    state.require_data()
     cols = _resolve_varlist(parsed["varlist"], state.data)
     subset = _apply_if_in(state.data[cols], parsed["if_cond"], parsed["in_range"])
 
@@ -63,6 +116,51 @@ def cmd_browse(rest: str, state: AppState, console: Console):
         # Fallback: rich table display
         console.print("[yellow]TUI not available. Install textual: ssc install textual[/yellow]")
         _display_rich_table(subset, state, console, max_rows=50)
+
+
+def _browse_file(path: str, state: AppState, console: Console):
+    """Load a preview of a data file and open it in the explorer (read-only).
+
+    Does not modify the in-memory dataset. Parquet is read with polars' native
+    reader (no pyarrow needed), capped to a preview so large files stay snappy.
+    """
+    import os
+    from commands.workspace import resolve_path
+
+    rp = resolve_path(path)
+    if not os.path.exists(rp):
+        console.print(f"[red]File not found: {path}[/red]")
+        return
+
+    ext = os.path.splitext(rp)[1].lower()
+    cap = 50000  # preview row cap for responsiveness
+    try:
+        if ext in (".parquet", ".pq"):
+            import polars as pl
+            from commands.lrtm import _pl_to_pandas
+            lf = pl.scan_parquet(rp)
+            total = lf.select(pl.len()).collect().item()
+            df = _pl_to_pandas(lf.head(cap).collect())
+        else:
+            from rln_io.fileio import load_data
+            df, _meta = load_data(rp)
+            total = len(df)
+            if len(df) > cap:
+                df = df.head(cap)
+    except Exception as e:
+        console.print(f"[red]Could not open {os.path.basename(rp)}: {e}[/red]")
+        return
+
+    shown = len(df)
+    note = f"{shown:,} rows" if shown >= total else f"first {shown:,} of {total:,} rows"
+    console.print(f"[dim]Exploring {os.path.basename(rp)} ({note}). "
+                  f"In-memory dataset is unchanged.[/dim]")
+    try:
+        from tui.browser import launch_browser
+        launch_browser(df, state)
+    except ImportError:
+        console.print("[yellow]Interactive browser unavailable; showing a preview.[/yellow]")
+        _display_rich_table(df, state, console, max_rows=50)
 
 
 def cmd_describe(rest: str, state: AppState, console: Console):

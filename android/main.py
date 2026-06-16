@@ -66,7 +66,7 @@ from rich.console import Console
 from commands.state import AppState
 from commands.parser import CommandParser
 
-__version__ = "1.2.7"
+__version__ = "1.2.8"
 
 LOGO = r""" ____  _
 |  _ \| |_ __
@@ -314,7 +314,20 @@ def browse_root():
 
 
 def default_open_dir():
-    """A useful starting folder for the file picker (where users put files)."""
+    """A useful starting folder for the file picker.
+
+    Prefers the shared workspace folder (the bundled examples on first run, or
+    the user's latest project / pinned `set workdir` afterwards) so the example
+    data and scripts are reachable by default. Falls back to the usual
+    Download/Documents folders, then shared-storage root.
+    """
+    try:
+        from commands.workspace import get_open_dir
+        d = get_open_dir()
+        if d and os.path.isdir(d):
+            return d
+    except Exception:
+        pass
     root = browse_root()
     for sub in ("Download", "Documents", "Downloads"):
         d = os.path.join(root, sub)
@@ -371,10 +384,16 @@ def run_do_file(filepath, parser, console):
     engine's `do` command and the Run-script button behave identically on
     Android. The engine does `from main import run_do_file`, and on Android the
     `main` module is THIS file — so it must live here."""
-    filepath = os.path.expanduser(filepath)
+    try:
+        from commands.workspace import resolve_path, remember_dir
+        filepath = resolve_path(filepath)
+    except Exception:
+        filepath = os.path.expanduser(filepath)
+        remember_dir = lambda *_a, **_k: None
     if not os.path.exists(filepath):
         console.print(f"[red]Script not found: {filepath}[/red]")
         return False
+    remember_dir(filepath)
 
     console.print(f"[dim]Running: {filepath}[/dim]")
 
@@ -904,25 +923,99 @@ class RlnApp(App):
 
     def refresh_data(self):
         st = self.engine.state
-        if not st.has_data():
-            self.data_status.text = "No data loaded"
-            self.data_label.text = ""
-            return
-        df = st.data
         try:
             max_rows = int(st.settings.get("max_display_rows", 200) or 200)
         except Exception:
             max_rows = 200
-        view = df.head(max_rows)
+
+        preview_mode = False
+        total_rows = None
+        if st.has_data():
+            # Materialized data (after `lrtm collect`, or a normal `use`).
+            df = st.data
+            view = df.head(max_rows)
+            total_rows = len(df)
+        else:
+            # No materialized data yet — but if a parquet/CSV is lazy-loaded via
+            # `lrtm use`, stream a head() preview so the Data tab shows what the
+            # data looks like immediately (parquet-explorer style). Full data
+            # appears here after `lrtm collect`.
+            prev = None
+            try:
+                from commands.lrtm import lrtm_preview
+                prev = lrtm_preview(st, max_rows)
+            except Exception:
+                prev = None
+            if not prev:
+                self.data_status.text = "No data loaded"
+                self.data_label.text = ""
+                return
+            view, total_rows = prev
+            preview_mode = True
+
         try:
-            import pandas as pd
-            with pd.option_context("display.max_columns", None,
-                                   "display.width", None):
-                self.data_label.text = view.to_string(max_rows=max_rows)
+            self.data_label.markup = True
+            self.data_label.text = self._render_data_markup(view)
         except Exception:
-            self.data_label.text = view.to_string()
-        more = "" if len(df) <= max_rows else f"; showing first {max_rows}"
-        self.data_status.text = (f"{len(df)} obs, {len(df.columns)} vars{more}")
+            # Fall back to plain text if anything in the colour path fails.
+            self.data_label.markup = False
+            try:
+                self.data_label.text = view.to_string(max_rows=max_rows)
+            except Exception:
+                self.data_label.text = view.to_string()
+
+        ncols = len(view.columns)
+        if preview_mode:
+            tot = f"{total_rows:,}" if isinstance(total_rows, int) else "?"
+            self.data_status.text = (
+                f"LRTM preview: {len(view)} of {tot} rows x {ncols} vars  "
+                "(run 'lrtm collect' to load all)")
+        else:
+            more = "" if total_rows <= max_rows else f"; showing first {max_rows}"
+            self.data_status.text = (f"{total_rows} obs, {ncols} vars{more}"
+                                     "  (numbers blue, strings orange)")
+
+    def _render_data_markup(self, view):
+        """Build a monospace, colour-coded table using Kivy markup.
+
+        Numbers blue, strings orange, missing muted — the same scheme as the
+        desktop GUI's data browser, via the shared commands.datacolors palette.
+        """
+        from commands.datacolors import classify, hex_for
+        from kivy.utils import escape_markup
+        dark = (self.theme_name == "dark")
+
+        cols = [str(c) for c in view.columns]
+        widths = {c: max(6, min(22, len(c))) for c in cols}
+        rows = []
+        for idx, row in view.iterrows():
+            cells = []
+            for c, val in zip(cols, row.tolist()):
+                kind = classify(val)
+                text = "" if kind == "missing" else str(val)
+                if len(text) > 22:
+                    text = text[:19] + "..."
+                widths[c] = max(widths[c], min(22, len(text)))
+                cells.append((text, kind, val))
+            rows.append((str(idx), cells))
+
+        idxw = max(4, min(10, max((len(str(i)) for i in view.index), default=4)))
+        hdr = hex_for("header", dark=dark)
+        miss = hex_for("missing", dark=dark)
+
+        def tag(color, s):
+            return "[color=%sff]%s[/color]" % (color, escape_markup(s))
+
+        out = [tag(hdr, " " * (idxw + 2))
+               + "".join(tag(hdr, c.ljust(widths[c] + 2)) for c in cols)]
+        for idx_text, cells in rows:
+            line = tag(miss, idx_text[:idxw].ljust(idxw) + "  ")
+            for c, (text, kind, val) in zip(cols, cells):
+                cell = (text.rjust(widths[c]) if kind == "number"
+                        else text.ljust(widths[c])) + "  "
+                line += tag(hex_for(kind, val, dark=dark), cell)
+            out.append(line)
+        return "\n".join(out)
 
     def refresh_plot(self):
         if self._last_plot and os.path.exists(self._last_plot):

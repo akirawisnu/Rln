@@ -198,7 +198,7 @@ class CircularButton(tk.Canvas):
 class RlnGuiApp:
     """Responsive GUI shell for Rln."""
 
-    def __init__(self, root: tk.Tk, version: str = "1.2.7"):
+    def __init__(self, root: tk.Tk, version: str = "1.2.8"):
         self.root = root
         self.version = version
         self.root.title(f"Rln (ARLEN) v{version}")
@@ -861,9 +861,18 @@ class RlnGuiApp:
     # ------------------------------------------------------------------
     # File actions
     # ------------------------------------------------------------------
+    def _initial_dir(self) -> str:
+        """Folder the file dialogs should open in: latest project / examples."""
+        try:
+            from commands.workspace import get_open_dir
+            return get_open_dir()
+        except Exception:
+            return os.path.expanduser("~")
+
     def open_dataset(self) -> None:
         path = filedialog.askopenfilename(
             title="Open dataset",
+            initialdir=self._initial_dir(),
             filetypes=[
                 ("Data files", "*.csv *.dta *.xlsx *.xls *.parquet *.json *.sav *.feather"),
                 ("All files", "*.*"),
@@ -878,6 +887,7 @@ class RlnGuiApp:
             return
         path = filedialog.asksaveasfilename(
             title="Export dataset",
+            initialdir=self._initial_dir(),
             defaultextension=".csv",
             filetypes=[("CSV", "*.csv"), ("dta", "*.dta"), ("Excel", "*.xlsx"), ("All files", "*.*")],
         )
@@ -885,7 +895,7 @@ class RlnGuiApp:
             self.execute_command(f'save "{path}", replace')
 
     def open_script(self) -> None:
-        path = filedialog.askopenfilename(title="Open script file", filetypes=[("Script files", "*.rln *.do *.txt"), ("All files", "*.*")])
+        path = filedialog.askopenfilename(title="Open script file", initialdir=self._initial_dir(), filetypes=[("Script files", "*.rln *.do *.txt"), ("All files", "*.*")])
         if not path:
             return
         try:
@@ -897,7 +907,7 @@ class RlnGuiApp:
             messagebox.showerror("Open script", str(exc))
 
     def save_script(self) -> None:
-        path = filedialog.asksaveasfilename(title="Save script file", defaultextension=".rln", filetypes=[("Script files", "*.rln *.do *.txt"), ("All files", "*.*")])
+        path = filedialog.asksaveasfilename(title="Save script file", initialdir=self._initial_dir(), defaultextension=".rln", filetypes=[("Script files", "*.rln *.do *.txt"), ("All files", "*.*")])
         if not path:
             return
         try:
@@ -966,14 +976,28 @@ class RlnGuiApp:
             return
         self.data_text.configure(state="normal")
         self.data_text.delete("1.0", "end")
-        if not self.state.has_data():
-            self.data_status.configure(text="No data loaded")
-            self.data_text.configure(state="disabled")
-            return
-
-        df = self.state.data
         max_rows = int(self.state.settings.get("max_display_rows", 200) or 200)
-        view = df.head(max_rows)
+        preview_mode = False
+        total_rows = None
+        if self.state.has_data():
+            df = self.state.data
+            view = df.head(max_rows)
+            total_rows = len(df)
+        else:
+            # No materialized data — show a streamed LRTM preview if a parquet/CSV
+            # is lazy-loaded via `lrtm use` (full data appears after `lrtm collect`).
+            prev = None
+            try:
+                from commands.lrtm import lrtm_preview
+                prev = lrtm_preview(self.state, max_rows)
+            except Exception:
+                prev = None
+            if not prev:
+                self.data_status.configure(text="No data loaded")
+                self.data_text.configure(state="disabled")
+                return
+            view, total_rows = prev
+            preview_mode = True
         columns = [str(c) for c in view.columns]
         widths = {col: max(8, min(28, len(col))) for col in columns}
         rendered_rows = []
@@ -1004,8 +1028,13 @@ class RlnGuiApp:
             self.data_text.insert("end", "\n")
 
         self.data_text.configure(state="disabled")
-        more = "" if len(df) <= max_rows else f"; showing first {max_rows:,}"
-        self.data_status.configure(text=f"{len(df):,} observations, {len(df.columns):,} variables{more}. Numbers are blue, strings are orange, missing values are muted.")
+        ncols = len(view.columns)
+        if preview_mode:
+            tot = f"{total_rows:,}" if isinstance(total_rows, int) else "?"
+            self.data_status.configure(text=f"LRTM preview: first {len(view):,} of {tot} rows, {ncols:,} variables. Run 'lrtm collect' to load all. Numbers are blue, strings are orange, missing values are muted.")
+        else:
+            more = "" if total_rows <= max_rows else f"; showing first {max_rows:,}"
+            self.data_status.configure(text=f"{total_rows:,} observations, {ncols:,} variables{more}. Numbers are blue, strings are orange, missing values are muted.")
 
     def refresh_plot(self) -> None:
         for child in self.plot_area.winfo_children():
@@ -1047,7 +1076,7 @@ class RlnGuiApp:
         messagebox.showinfo("About Rln", _read_about_text())
 
 
-def launch_gui(version: str = "1.2.7") -> None:
+def launch_gui(version: str = "1.2.8") -> None:
     """Launch the Rln GUI."""
     root = tk.Tk()
     RlnGuiApp(root, version=version)

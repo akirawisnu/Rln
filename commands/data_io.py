@@ -44,12 +44,18 @@ def cmd_use(rest: str, state: AppState, console: Console):
         cmd_lrtm(f"use {filepath}", state, console)
         return
 
+    # Resolve bare names against the workspace (latest project / examples), so
+    # `use "demographics.csv"` finds the shipped example without a full path.
+    from commands.workspace import resolve_path, remember_dir
+    filepath = resolve_path(filepath)
+
     # Load
     console.print(f"[dim]Loading {filepath}...[/dim]")
     df, meta = load_data(filepath)
 
     name = os.path.splitext(os.path.basename(filepath))[0]
     state.set_data(df, name=name, source=filepath)
+    remember_dir(filepath)  # this folder becomes the new default starting point
 
     # Apply metadata
     if "variable_labels" in meta:
@@ -110,8 +116,15 @@ def cmd_import(rest: str, state: AppState, console: Console):
         console.print("[dim]Available: delimited, excel, html[/dim]")
         return
 
+    # Resolve bare names against the workspace (latest project / examples).
+    from commands.workspace import resolve_path, remember_dir
+    if subcommand != "html":  # html may be a URL — leave it untouched
+        filepath = resolve_path(filepath)
+
     console.print(f"[dim]Importing {filepath}...[/dim]")
     df, meta = load_data(filepath, **kwargs)
+    if subcommand != "html":
+        remember_dir(filepath)
 
     name = os.path.splitext(os.path.basename(filepath))[0] if not filepath.startswith("http") else "html_data"
     state.set_data(df, name=name, source=filepath)

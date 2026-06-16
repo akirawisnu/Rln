@@ -23,26 +23,40 @@ icon.filename = ./icon.png
 source.dir = .
 source.main = main.py
 
-# Bundle Python sources plus example datasets and docs the engine may open.
-source.include_exts = py,png,jpg,jpeg,csv,dta,parquet,txt,md,json
+# Bundle Python sources plus example datasets, scripts, and docs the engine may
+# open. NOTE: the example *scripts* are .do / .rln files — they MUST be listed
+# here or buildozer silently drops them and the in-app examples show data files
+# with no scripts to run.
+source.include_exts = py,png,jpg,jpeg,csv,dta,parquet,txt,md,json,do,rln
 # Keep the build lean: drop the desktop-only / build-only trees if present.
 source.exclude_dirs = bin,.buildozer,__pycache__,tests,packaging,gui,hf_models,argos_models,dist,build
 
-version = 1.2.7
+version = 1.2.8
 
 # ---------------------------------------------------------------------------
-# Python requirements  —  SHIP 1: basic data-science stack only
+# Python requirements
 #
-# Goal: produce a working APK now. We ship the modern scientific stack that
-# Rln was developed against (numpy 2.x, pandas 2.3, scipy, matplotlib from the
-# p4a `develop` recipes) so the core data commands behave exactly as on the
-# desktop build. Econometrics (statsmodels/linearmodels/diff-diff) and LRTM
-# (polars) are intentionally OMITTED here and return in a later ship once their
-# custom recipes are proven — see p4a-recipes/statsmodels and README_ANDROID.md.
+# Ships the modern scientific stack Rln was built against (numpy 2.x, pandas,
+# scipy, matplotlib from the p4a `develop` recipes), plus polars for LRTM and
+# a from-source statsmodels (see p4a-recipes/statsmodels).
 #
-# The engine lazily imports those heavy libs only inside the relevant commands,
-# so their absence does not break import; the affected commands simply report
-# "not available" at runtime instead of crashing the app.
+# Deliberately NOT shipped, and why it's safe:
+#   * pyarrow  — no usable aarch64-Android wheel (Apache Arrow C++). Rln avoids
+#                it: polars reads parquet natively and LRTM converts to pandas
+#                via to_numpy(), not polars.to_pandas() (which needs pyarrow).
+#                See commands/lrtm.py:_pl_to_pandas and rln_io/_load_parquet.
+#   * linearmodels / diff-diff — heavy; ivregress, panel RE and the advanced
+#                didregress estimators report "needs desktop" at runtime.
+#   * rapidfuzz / polyfuzz, pyreadr, dbfread, NLP stack — optional; the
+#                relevant commands degrade with a clear message.
+#
+# IMPORTANT: statsmodels is listed below, but if its recipe ever fails to load
+# on-device the engine does NOT break — commands/stats_fallback.py provides a
+# validated NumPy/SciPy backend (regress/logit/probit/poisson + diagnostics +
+# xtreg-FE + DiD-TWFE) that _check_statsmodels() switches to automatically.
+#
+# All heavy libs are imported lazily inside the relevant commands, so their
+# absence never breaks app startup.
 # ---------------------------------------------------------------------------
 requirements = python3,kivy,pillow,rich,numpy,pandas,scipy,matplotlib,python-dateutil,pytz,packaging,setuptools,polars,openpyxl,xlrd,et-xmlfile,pygments,patsy,statsmodels
 

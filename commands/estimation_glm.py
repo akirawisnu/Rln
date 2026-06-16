@@ -18,11 +18,19 @@ from commands.expression import eval_condition
 
 
 def _check_sm():
+    """Return statsmodels, or Rln's validated NumPy/SciPy fallback when it is
+    unavailable (e.g. on Android). The fallback covers logit/probit/poisson and
+    GLM (Binomial/Poisson, freq_weights, offset); unsupported models such as
+    nbreg/tobit raise a clear message via the fallback's module guard."""
     try:
         import statsmodels.api as sm
         return sm
-    except ImportError:
-        raise RuntimeError("statsmodels is required (ssc install statsmodels)")
+    except Exception:
+        # See _check_statsmodels in estimation.py: fall back on ANY load failure
+        # so mobile gets working econometrics instead of a crash.
+        from commands import stats_fallback as sm
+        sm.notify_once()
+        return sm
 
 
 # ───────────────────────────────────────────────────────────────

@@ -189,8 +189,14 @@ def _xtreg_linearmodels(df, depvar, indepvars, state, use_fe, robust, cluster_va
 
 
 def _xtreg_statsmodels_fallback(df, depvar, indepvars, state, use_fe, robust, n_dropped, console):
-    """Panel FE via entity dummies with statsmodels (no linearmodels)."""
-    import statsmodels.api as sm
+    """Panel FE via entity dummies with statsmodels (no linearmodels).
+
+    Uses _check_statsmodels(), so on platforms without statsmodels (Android)
+    this transparently runs on Rln's NumPy/SciPy OLS fallback instead of
+    crashing — making `xtreg, fe` available on mobile.
+    """
+    from commands.estimation import _check_statsmodels
+    sm = _check_statsmodels()
 
     panel_var = state._panel_var
 
@@ -360,8 +366,14 @@ def cmd_didregress(rest: str, state: AppState, console: Console):
 
 
 def _did_twfe(df, depvar, treatment, group_var, time_var, parsed, state, console):
-    """Two-way fixed effects DiD via statsmodels."""
-    import statsmodels.api as sm
+    """Two-way fixed effects DiD via statsmodels.
+
+    Routed through _check_statsmodels() so method(twfe) — the one DiD estimator
+    that needs no diff-diff package — also works on Android via the NumPy/SciPy
+    OLS fallback.
+    """
+    from commands.estimation import _check_statsmodels
+    sm = _check_statsmodels()
 
     # Build model: Y = treatment + group_FE + time_FE
     model_df = df[[depvar, treatment]].copy().dropna()

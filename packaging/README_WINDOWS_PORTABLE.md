@@ -14,7 +14,7 @@ The output will be:
 
 ```text
 dist\rln-full\
-dist\Rln-v1.2.7-windows-portable-full.zip
+dist\Rln-v1.2.8-windows-portable-full.zip
 ```
 
 Inside the portable folder:
@@ -77,7 +77,7 @@ Do **not** use one-file mode for the full portable build. One-file executables u
 Share the generated zip:
 
 ```text
-dist\Rln-v1.2.7-windows-portable-full.zip
+dist\Rln-v1.2.8-windows-portable-full.zip
 ```
 
 Users should unzip the folder and launch:

@@ -917,6 +917,19 @@ def cmd_set(rest: str, state: AppState, console: Console):
 
     value = parts[1].strip()
 
+    # `set workdir "<path>"` — pin the default folder that file pickers and
+    # bare `use`/`do` names resolve against (overrides latest-project tracking).
+    if key in ("workdir", "defaultdir", "folder"):
+        path = value.strip().strip("\"'")
+        import os as _os
+        if not _os.path.isdir(_os.path.expanduser(path)):
+            console.print(f"[red]set workdir: not a folder: {path}[/red]")
+            return
+        from commands.workspace import set_default_dir
+        resolved = set_default_dir(path)
+        console.print(f"[green]Default folder set to {resolved}[/green]")
+        return
+
     # compact `set on_error stop/continue` — governs whether scripts
     # halt on an error (the default) or plough through.
     if key == "on_error":

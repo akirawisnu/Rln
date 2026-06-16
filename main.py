@@ -31,7 +31,7 @@ from rich.console import Console
 from commands.parser import CommandParser
 from commands.state import AppState
 
-__version__ = "1.2.7"
+__version__ = "1.2.8"
 
 LOGO = """\
 [bold cyan] ____  _       [/bold cyan]
@@ -56,10 +56,14 @@ def get_prompt_text(state: AppState) -> str:
 
 def run_do_file(filepath: str, parser: CommandParser, console: Console):
     """Execute a script file."""
-    filepath = os.path.expanduser(filepath)
+    # Resolve bare names against the workspace so `do "sample.do"` finds the
+    # shipped example without a full path (and tracks the latest project).
+    from commands.workspace import resolve_path, remember_dir
+    filepath = resolve_path(filepath)
     if not os.path.exists(filepath):
         console.print(f"[red]Script not found: {filepath}[/red]")
         return False
+    remember_dir(filepath)
 
     console.print(f"[dim]Running: {filepath}[/dim]")
 

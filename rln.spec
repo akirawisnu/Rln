@@ -61,14 +61,25 @@ print(f"\n*** Rln build: tier={TIER}, onefile={ONEFILE}, "
 # Data files — what ships with the binary
 # ─────────────────────────────────────────────────────────────
 datas = [
-    ('examples', 'examples'),
     ('rln_io', 'rln_io'),
     ('README.md', '.'),
     ('LICENSE', '.'),
 ]
 
-# Ship model folders only if they exist (empty dirs would error on copy)
-if os.path.isdir('argos_models'):
+# Examples — ship only edition-relevant scripts. Lite/offline have no NLP stack,
+# so the NLP showcase scripts (and their data) would only error there; they ship
+# in the full build. Everything else (quickstart, LRTM, panel/DiD, extensions) is
+# bundled in every tier.
+_nlp_only = {"nlp_showcase.do", "nlp_extend_showcase.do", "nlp_survey.csv"}
+for _fn in sorted(os.listdir('examples')):
+    _src = os.path.join('examples', _fn)
+    if os.path.isfile(_src) and not (TIER != "full" and _fn in _nlp_only):
+        datas.append((_src, 'examples'))
+
+# Ship model folders only if they exist (empty dirs would error on copy).
+# Gate on tier so the lite build stays lean — it has no NLP, so the ~170 MB
+# Argos models and ~220 MB HF models would be dead weight in the lite download.
+if os.path.isdir('argos_models') and TIER in ("offline", "full"):
     datas.append(('argos_models', 'argos_models'))
 if os.path.isdir('hf_models') and TIER == "full":
     datas.append(('hf_models', 'hf_models'))
@@ -97,6 +108,10 @@ core_hidden = [
     'commands.rln_cmds',
     'commands.scripting',
     'commands.estimation',
+    'commands.estimation_glm',
+    'commands.stats_fallback',
+    'commands.fuzzy',
+    'commands.workspace',
     'commands.panel',
     'commands.charts',
     'commands.nlp',
@@ -141,6 +156,18 @@ core_hidden = [
     'matplotlib.pyplot',
     'matplotlib.backends.backend_agg',
     'matplotlib.backends.backend_tkagg',
+    # matplotlib's hard runtime deps. Enumerated so a frozen build that forgets
+    # any of these fails at BUILD time, not when the user runs `histogram`.
+    # PIL is imported by matplotlib.pyplot itself; the others are C-extensions
+    # (kiwisolver/contourpy) or pure-Python helpers it needs to render.
+    'PIL',
+    'PIL.Image',
+    'PIL._imaging',
+    'kiwisolver',
+    'contourpy',
+    'cycler',
+    'pyparsing',
+    'fonttools',
     # diff-diff — always included; small and frequently used
     'diff_diff',
     'diff_diff._backend',
@@ -208,7 +235,11 @@ except Exception as exc:
 # ─────────────────────────────────────────────────────────────
 binaries = []
 
-for pkg in ("statsmodels", "scipy", "pandas"):
+# matplotlib and PIL carry data files (mpl-data fonts + matplotlibrc; PIL's
+# dynamically-loaded image codecs) that a bare hidden-import won't pull in.
+# collect_all grabs their binaries/datas/submodules so charts render in the
+# frozen build. (This is part of the lite-tier plotting fix — see excludes.)
+for pkg in ("statsmodels", "scipy", "pandas", "matplotlib", "PIL"):
     try:
         _b, _d, _h = collect_all(pkg)
         binaries += _b
@@ -266,7 +297,13 @@ if TIER == "lite":
         'huggingface_hub', 'safetensors',
         'argostranslate', 'stanza', 'ctranslate2', 'sentencepiece',
         'sumy', 'nltk',
-        'sklearn', 'PIL', 'Pillow',
+        'sklearn',
+        # NOTE: do NOT exclude 'PIL'/'Pillow' here. `import matplotlib.pyplot`
+        # imports Pillow, so excluding it silently breaks every chart command in
+        # the lite build (histogram/scatter/... fail with "No module named
+        # 'PIL'", surfaced as "matplotlib is required"). This was the lite-tier
+        # plotting bug. Pillow is small; keep it. Only exclude things matplotlib
+        # never touches.
     ]
 elif TIER == "offline":
     base_excludes += [
@@ -378,8 +415,8 @@ if platform.system() == 'Darwin' and not ONEFILE:
         bundle_identifier=f'org.akirawisnu.rln.{TIER}',
         info_plist={
             'NSHighResolutionCapable': 'True',
-            'CFBundleShortVersionString': '1.2.7',
-            'CFBundleVersion': '1.2.7',
+            'CFBundleShortVersionString': '1.2.8',
+            'CFBundleVersion': '1.2.8',
             'LSBackgroundOnly': 'False',
             'NSRequiresAquaSystemAppearance': 'False',
             'LSEnvironment': {

@@ -27,16 +27,25 @@ from commands.expression import eval_condition
 
 
 def _check_matplotlib():
+    # NOTE: importing matplotlib.pyplot also pulls in Pillow (PIL) and the
+    # C-extensions kiwisolver / contourpy. A frozen build that bundles
+    # matplotlib but drops any of those will fail HERE, not on `import
+    # matplotlib`. We surface the *underlying* ImportError so the real missing
+    # module (e.g. "No module named 'PIL'") is visible instead of a generic
+    # "matplotlib is required" — that distinction is what makes packaging bugs
+    # diagnosable. (See rln.spec: PIL must not be excluded when matplotlib is in.)
     try:
         import matplotlib
         matplotlib.use("Agg")  # Always non-interactive — graphs open in system viewer
-    except ImportError:
+        import matplotlib.pyplot as plt
+        return plt
+    except ImportError as e:
         raise ImportError(
-            "matplotlib is required for charts.\n"
-            "Install with: ssc install matplotlib"
+            "matplotlib (and its Pillow/kiwisolver deps) is required for charts.\n"
+            f"(underlying import error: {e})\n"
+            "On a source install: ssc install matplotlib pillow\n"
+            "On a packaged build this means the chart libraries were not bundled."
         )
-    import matplotlib.pyplot as plt
-    return plt
 
 
 def _apply_common_options(ax, plt, parsed, default_title=""):

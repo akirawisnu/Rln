@@ -19,6 +19,9 @@ import pandas as pd
 import numpy as np
 from typing import Optional
 
+from rich.text import Text
+from commands.datacolors import classify, rich_style_for, RICH_STYLES
+
 try:
     from textual.app import App, ComposeResult
     from textual.widgets import Header, Footer, DataTable, Input, Static
@@ -85,7 +88,7 @@ def _fallback_browser(df: pd.DataFrame, state, console):
                     formatted = f"{val:.4f}"
                     cells.append(f"[cyan]{formatted}[/cyan]" if val >= 0 else f"[red]{formatted}[/red]")
                 else:
-                    cells.append(str(val)[:35])
+                    cells.append(f"[orange3]{str(val)[:35]}[/orange3]")
             table.add_row(*cells)
 
         console.print(table)
@@ -245,36 +248,43 @@ if HAS_TEXTUAL:
         def on_mount(self) -> None:
             self._populate_table(self.original_df)
 
-        def _format_cell(self, val, col_name: str) -> str:
-            """Format a cell value with appropriate display."""
-            if pd.isna(val):
-                return "."
+        def _format_cell(self, val, col_name: str):
+            """Format a cell value as a type-coloured Rich ``Text``.
 
-            # Check value labels
+            Numbers cyan (negatives red), strings orange, missing muted — the
+            same scheme as the desktop GUI, so the explorer looks consistent
+            across versions.
+            """
+            kind = classify(val)
+            if kind == "missing":
+                return Text(".", style=rich_style_for("missing"))
+
+            # Check value labels (integer-coded categoricals)
             if self.state and isinstance(val, (int, np.integer)):
                 label = self.state.get_value_label_text(col_name, int(val))
                 if label:
-                    return f"{val} ({label})"
+                    return Text(f"{val} ({label})", style=rich_style_for("number", val))
 
             if isinstance(val, (float, np.floating)):
-                return f"{val:.4f}"
-
-            return str(val)
+                text = f"{val:.4f}"
+            else:
+                text = str(val)
+            return Text(text, style=rich_style_for(kind, val))
 
         def _populate_table(self, df: pd.DataFrame):
             """Fill the DataTable with DataFrame contents."""
             table = self.query_one("#data-table", DataTable)
             table.clear(columns=True)
 
-            table.add_column("#", key="__rownum__")
+            table.add_column(Text("#", style=RICH_STYLES["missing"]), key="__rownum__")
 
             for col in df.columns:
-                label = col
+                label = str(col)
                 if self.state:
                     vl = self.state.get_variable_label(col)
                     if vl:
                         label = f"{col} ({vl})"
-                table.add_column(label, key=str(col))
+                table.add_column(Text(label, style=RICH_STYLES["header"]), key=str(col))
 
             # Performance limit
             max_rows = 10000

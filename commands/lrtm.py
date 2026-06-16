@@ -57,6 +57,63 @@ def _check_rapidfuzz():
         )
 
 
+def _pl_to_pandas(df):
+    """Convert a Polars DataFrame to pandas WITHOUT requiring pyarrow.
+
+    Polars' own ``DataFrame.to_pandas()`` always routes through
+    ``pyarrow.Table.from_batches()`` internally (see polars' frame.py —
+    ``_to_pandas_without_object_columns``), so it raises
+    ``ModuleNotFoundError: No module named 'pyarrow'`` on any platform where
+    pyarrow is not installed. That is exactly the case on the Android build:
+    polars cross-compiles (Rust), but pyarrow (Apache Arrow C++) has no usable
+    aarch64-Android wheel, so ``lrtm collect`` / ``lrtm use ..., sample(N)``
+    would crash with a pyarrow error even though "polars is already there".
+
+    On desktop (pyarrow present) we keep using the fast ``to_pandas()`` path so
+    behaviour and dtypes are byte-for-byte unchanged. Only when pyarrow is
+    missing do we rebuild the pandas frame column-by-column from Polars'
+    *native* ``Series.to_numpy()`` engine (``use_pyarrow=False`` by default
+    since polars 0.20.28), which needs only numpy. This mirrors the same
+    fallback already used by ``rln_io.fileio._load_parquet`` and keeps LRTM
+    fully functional on Android with no pyarrow dependency.
+    """
+    import pandas as pd
+    try:
+        return df.to_pandas()  # fast path — unchanged desktop behaviour
+    except (ImportError, ModuleNotFoundError):
+        # pyarrow unavailable (e.g. Android): rebuild via numpy.
+        cols = df.columns
+        if df.height == 0:
+            return pd.DataFrame({name: [] for name in cols})
+        data = {name: df.get_column(name).to_numpy() for name in cols}
+        out = pd.DataFrame(data)
+        return out[list(cols)] if list(out.columns) != list(cols) else out
+
+
+def lrtm_preview(state, n: int = 200):
+    """Streamed head() preview of the active LRTM lazy frame, or ``None``.
+
+    Returns ``(preview_df, total_rows)`` where ``preview_df`` is the first ``n``
+    rows pulled from the on-disk source through Polars' lazy engine (no full
+    materialization) and ``total_rows`` is the known row count (or ``None`` for
+    sources where it isn't cheaply known, e.g. CSV). This lets a data browser
+    show *what a parquet looks like* the moment you run ``lrtm use`` — the
+    parquet-explorer experience — while full, materialized exploration still
+    comes from ``lrtm collect``. pyarrow-free, so it works on Android.
+    """
+    lf = getattr(state, "_lrtm_lf", None)
+    if lf is None:
+        return None
+    try:
+        preview = _pl_to_pandas(lf.head(int(n)).collect())
+    except Exception:
+        return None
+    total = getattr(state, "_lrtm_row_count", None)
+    if not isinstance(total, int):
+        total = None
+    return preview, total
+
+
 # ──────────────────────────────────────────────
 #  Main dispatcher
 # ──────────────────────────────────────────────
@@ -419,7 +476,7 @@ def _lrtm_use(rest, state, console):
         # Show sample if requested
         if sample_n > 0:
             sample = lf.head(sample_n).collect()
-            state.set_data(sample.to_pandas(), name=os.path.basename(filepath), source=filepath)
+            state.set_data(_pl_to_pandas(sample), name=os.path.basename(filepath), source=filepath)
             console.print(f"[dim]Sample of {sample_n} rows loaded into main memory[/dim]")
 
     except Exception as e:
@@ -549,7 +606,7 @@ def _lrtm_count(rest, state, console):
         else:
             console.print("[yellow]Could not parse condition for Polars. Collecting to pandas...[/yellow]")
             from commands.expression import eval_condition
-            df = lf.collect().to_pandas()
+            df = _pl_to_pandas(lf.collect())
             mask = eval_condition(parsed["if_cond"], df)
             n = mask.sum()
     else:
@@ -1388,7 +1445,7 @@ def _lrtm_collect(rest, state, console):
     console.print("[dim]Collecting LRTM data to memory...[/dim]")
 
     source = state._lrtm_source
-    df = state._lrtm_lf.collect().to_pandas()
+    df = _pl_to_pandas(state._lrtm_lf.collect())
     name = os.path.basename(source) if source else "lrtm_data"
     state.set_data(df, name=name.split(".")[0], source=source)
 

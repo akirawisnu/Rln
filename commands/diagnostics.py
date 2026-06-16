@@ -29,6 +29,24 @@ def _require_last_estimation(state, console, need_residuals=True):
     return state.e_results["predict_model"]
 
 
+def _diag_funcs():
+    """Diagnostic test functions from statsmodels if available, else Rln's
+    validated NumPy fallback. The fallback covers vif / Breusch-Pagan / White /
+    Durbin-Watson (the common ones); Breusch-Godfrey and Ramsey RESET remain
+    statsmodels-only and degrade with a clear message on platforms without it.
+    """
+    try:
+        from statsmodels.stats.outliers_influence import variance_inflation_factor
+        from statsmodels.stats.diagnostic import het_breuschpagan, het_white
+        from statsmodels.stats.stattools import durbin_watson
+        return {"vif": variance_inflation_factor, "bp": het_breuschpagan,
+                "white": het_white, "dw": durbin_watson, "native": True}
+    except Exception:
+        from commands import stats_fallback as fb
+        return {"vif": fb.variance_inflation_factor, "bp": fb.het_breuschpagan,
+                "white": fb.het_white, "dw": fb.durbin_watson, "native": False}
+
+
 # ───────────────────────────────────────────────────────────────
 # vif
 # ───────────────────────────────────────────────────────────────
@@ -43,7 +61,7 @@ def cmd_vif(rest: str, state: AppState, console: Console):
     results = _require_last_estimation(state, console)
     if results is None:
         return
-    from statsmodels.stats.outliers_influence import variance_inflation_factor
+    variance_inflation_factor = _diag_funcs()["vif"]
 
     try:
         X = results.model.exog
@@ -115,9 +133,10 @@ def _estat_hettest(rest, state, console):
     results = _require_last_estimation(state, console)
     if results is None:
         return
-    from statsmodels.stats.diagnostic import het_breuschpagan
+    het_breuschpagan = _diag_funcs()["bp"]
     try:
-        lm, lm_p, f, f_p = het_breuschpagan(results.resid, results.model.exog)
+        lm, lm_p, f, f_p = het_breuschpagan(np.asarray(results.resid),
+                                            results.model.exog)
     except Exception as e:
         console.print(f"[red]hettest failed: {e}[/red]")
         return
@@ -135,7 +154,13 @@ def _estat_bgodfrey(rest, state, console):
     results = _require_last_estimation(state, console)
     if results is None:
         return
-    from statsmodels.stats.diagnostic import acorr_breusch_godfrey
+    try:
+        from statsmodels.stats.diagnostic import acorr_breusch_godfrey
+    except Exception:
+        console.print("[yellow]bgodfrey needs statsmodels (desktop build). On "
+                      "this platform use 'estat dwatson' for a Durbin-Watson "
+                      "autocorrelation check instead.[/yellow]")
+        return
     parsed = parse_command_line(rest)
     nlags = int(parsed["options"].get("lags", 1))
     try:
@@ -157,9 +182,10 @@ def _estat_imtest(rest, state, console):
     results = _require_last_estimation(state, console)
     if results is None:
         return
-    from statsmodels.stats.diagnostic import het_white
+    het_white = _diag_funcs()["white"]
     try:
-        lm, lm_p, f, f_p = het_white(results.resid, results.model.exog)
+        lm, lm_p, f, f_p = het_white(np.asarray(results.resid),
+                                     results.model.exog)
     except Exception as e:
         console.print(f"[red]imtest failed: {e}[/red]")
         return
@@ -179,8 +205,9 @@ def _estat_ovtest(rest, state, console):
         return
     try:
         from statsmodels.stats.diagnostic import linear_reset
-    except ImportError:
-        console.print("[red]ovtest: requires newer statsmodels (>=0.14)[/red]")
+    except Exception:
+        console.print("[yellow]ovtest (Ramsey RESET) needs statsmodels (desktop "
+                      "build); not available on this platform.[/yellow]")
         return
     try:
         reset = linear_reset(results, power=[2, 3], use_f=True)
@@ -205,8 +232,8 @@ def _estat_dwatson(rest, state, console):
     results = _require_last_estimation(state, console)
     if results is None:
         return
-    from statsmodels.stats.stattools import durbin_watson
-    dw = durbin_watson(results.resid)
+    durbin_watson = _diag_funcs()["dw"]
+    dw = durbin_watson(np.asarray(results.resid))
     console.print(f"\n[bold]Durbin-Watson statistic[/bold] = {dw:.4f}")
     if dw < 1.5:
         console.print("[yellow]  DW < 1.5 suggests positive autocorrelation.[/yellow]")
@@ -292,11 +319,13 @@ def cmd_xtserial(rest: str, state: AppState, console: Console):
         console.print("[red]xtserial: too few observations after first-differencing[/red]")
         return
 
-    # OLS in first differences
-    import statsmodels.api as sm
+    # OLS in first differences (uses the NumPy/SciPy fallback on platforms
+    # without statsmodels — only add_constant + OLS are needed here).
+    from commands.estimation import _check_statsmodels
+    sm = _check_statsmodels()
     Xc = sm.add_constant(X, has_constant="add")
     results = sm.OLS(y, Xc).fit()
-    resid = results.resid
+    resid = np.asarray(results.resid)
 
     # Regress resid_t on resid_{t-1} within panel
     panel_ids = df.loc[mask.index[mask]].set_index([pvar, tvar]).index.get_level_values(0)
@@ -310,8 +339,10 @@ def cmd_xtserial(rest: str, state: AppState, console: Console):
     Xr = sm.add_constant(df_resid["r_lag"].values, has_constant="add")
     rho_fit = sm.OLS(df_resid["r"].values, Xr).fit(cov_type="cluster",
                      cov_kwds={"groups": df_resid["pid"].values})
-    rho_hat = rho_fit.params[1]
-    rho_se  = rho_fit.bse[1]
+    # .iloc[1] = the slope on r_lag, robust to whether params is indexed by
+    # position (statsmodels numpy exog) or by name (Rln fallback).
+    rho_hat = rho_fit.params.iloc[1]
+    rho_se  = rho_fit.bse.iloc[1]
     t_stat  = (rho_hat - (-0.5)) / rho_se
     p_val   = 2 * (1 - t_dist.cdf(abs(t_stat), df=rho_fit.df_resid))
 

@@ -361,30 +361,25 @@ def cmd_fuzzmerge(rest: str, state: AppState, console: Console):
                   f"(method={method}, threshold={threshold})...[/dim]")
 
     try:
-        from polyfuzz import PolyFuzz
+        # Backend-agnostic matcher: PolyFuzz → rapidfuzz → difflib, so fuzzmerge
+        # works on every build (lite has no polyfuzz; Android has neither
+        # polyfuzz nor rapidfuzz — difflib is the pure-Python floor).
+        from commands.fuzzy import fuzzy_match
+        matches, backend = fuzzy_match(master_strings, using_strings,
+                                       threshold=threshold, method=method)
+        if backend != "polyfuzz":
+            console.print(f"[dim]Using {backend} backend "
+                          f"(polyfuzz unavailable on this build).[/dim]")
 
-        if method == "tfidf":
-            model = PolyFuzz("TF-IDF")
-        elif method == "editdistance":
-            model = PolyFuzz("EditDistance")
-        else:
-            model = PolyFuzz("TF-IDF")
+        console.print(f"[dim]{len(matches)} matches found above threshold {threshold}[/dim]")
 
-        model.match(master_strings, using_strings)
-        matches_df = model.get_matches()
-
-        # Filter by threshold
-        matches_df = matches_df[matches_df["Similarity"] >= threshold]
-
-        console.print(f"[dim]{len(matches_df)} matches found above threshold {threshold}[/dim]")
-
-        if len(matches_df) == 0:
+        if len(matches) == 0:
             console.print("[yellow]No matches above threshold. Try lowering the threshold.[/yellow]")
             return
 
         # Create match lookup
-        match_lookup = dict(zip(matches_df["From"], matches_df["To"]))
-        similarity_lookup = dict(zip(matches_df["From"], matches_df["Similarity"]))
+        match_lookup = {frm: to for (frm, to, _sim) in matches}
+        similarity_lookup = {frm: sim for (frm, _to, sim) in matches}
 
         # Add match columns to master
         match_col = f"{match_var}_matched"

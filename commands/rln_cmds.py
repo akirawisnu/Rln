@@ -17,6 +17,56 @@ from commands.parse_helpers import parse_command_line
 #  ssc install / ssc remove / ssc list
 # ──────────────────────────────────────────────
 
+_PIP_PYTHON_CACHE = "__unset__"
+
+
+def _find_pip_python():
+    """Return a Python interpreter that can run pip, or None.
+
+    On a normal source install ``sys.executable`` is the Python that's running
+    Rln, so ``sys.executable -m pip`` works. But:
+      * in a PyInstaller frozen build, ``sys.executable`` is the **Rln .exe** —
+        running ``rln.exe -m pip install X`` would just relaunch Rln (or error),
+        which is exactly the "ssc install error" users hit on the lite build;
+      * on Android there is no pip at all.
+    So we prefer sys.executable only when NOT frozen, then fall back to a real
+    ``python``/``python3`` on PATH, verifying each candidate actually has pip.
+    Returns None when no usable interpreter exists (packaged exe with no system
+    Python, or Android), so callers can print an honest message.
+    """
+    global _PIP_PYTHON_CACHE
+    if _PIP_PYTHON_CACHE != "__unset__":
+        return _PIP_PYTHON_CACHE
+
+    result = None
+    frozen = getattr(sys, "frozen", False) or hasattr(sys, "_MEIPASS")
+    # Only a source install can pip-install into the very environment Rln runs
+    # from. A frozen build is self-contained — installing into some other system
+    # Python on PATH would "succeed" but the package still wouldn't be importable
+    # by the bundled app, which is worse than an honest refusal.
+    if not frozen and sys.executable:
+        try:
+            probe = subprocess.run([sys.executable, "-m", "pip", "--version"],
+                                   capture_output=True, text=True, timeout=20)
+            if probe.returncode == 0:
+                result = sys.executable
+        except Exception:
+            result = None
+    _PIP_PYTHON_CACHE = result
+    return result
+
+
+def _no_pip_message(console):
+    console.print("[yellow]ssc install needs a Python interpreter with pip, which "
+                  "isn't available in this build.[/yellow]")
+    console.print("[dim]Packaged desktop builds (rln-lite/-full) and the Android "
+                  "app are self-contained and cannot pip-install new packages. "
+                  "Use the source install instead:[/dim]")
+    console.print("[dim]  git clone … && pip install <package>[/dim]")
+    console.print("[dim]…or download a build tier that already bundles it "
+                  "(e.g. the 'full' tier for NLP).[/dim]")
+
+
 def cmd_ssc(rest: str, state: AppState, console: Console):
     """
     ssc install package1 [package2 ...]    — Install Python packages (pip install)
@@ -25,7 +75,8 @@ def cmd_ssc(rest: str, state: AppState, console: Console):
     ssc search keyword                     — Search PyPI for packages
     ssc update package                     — Update a package
 
-    This wraps pip to provide econometric ssc install syntax.
+    This wraps pip to provide econometric ssc install syntax. Works on source
+    installs; on frozen/mobile builds it reports that pip isn't available.
     """
     parts = rest.strip().split(None, 1)
     if not parts:
@@ -40,10 +91,14 @@ def cmd_ssc(rest: str, state: AppState, console: Console):
             console.print("[red]Syntax: ssc install package_name[/red]")
             return
         packages = args.split()
+        py = _find_pip_python()
+        if py is None:
+            _no_pip_message(console)
+            return
         console.print(f"[dim]Installing: {', '.join(packages)}...[/dim]")
         try:
             result = subprocess.run(
-                [sys.executable, "-m", "pip", "install"] + packages,
+                [py, "-m", "pip", "install"] + packages,
                 capture_output=True, text=True, timeout=120
             )
             if result.returncode == 0:
@@ -67,10 +122,14 @@ def cmd_ssc(rest: str, state: AppState, console: Console):
             console.print("[red]Syntax: ssc remove package_name[/red]")
             return
         packages = args.split()
+        py = _find_pip_python()
+        if py is None:
+            _no_pip_message(console)
+            return
         console.print(f"[dim]Removing: {', '.join(packages)}...[/dim]")
         try:
             result = subprocess.run(
-                [sys.executable, "-m", "pip", "uninstall", "-y"] + packages,
+                [py, "-m", "pip", "uninstall", "-y"] + packages,
                 capture_output=True, text=True, timeout=60
             )
             if result.returncode == 0:
@@ -81,9 +140,13 @@ def cmd_ssc(rest: str, state: AppState, console: Console):
             console.print(f"[red]Error: {e}[/red]")
 
     elif subcmd == "list":
+        py = _find_pip_python()
+        if py is None:
+            _no_pip_message(console)
+            return
         try:
             result = subprocess.run(
-                [sys.executable, "-m", "pip", "list", "--format=columns"],
+                [py, "-m", "pip", "list", "--format=columns"],
                 capture_output=True, text=True, timeout=30
             )
             console.print(result.stdout)
@@ -103,10 +166,14 @@ def cmd_ssc(rest: str, state: AppState, console: Console):
             console.print("[red]Syntax: ssc update package_name[/red]")
             return
         packages = args.split()
+        py = _find_pip_python()
+        if py is None:
+            _no_pip_message(console)
+            return
         console.print(f"[dim]Updating: {', '.join(packages)}...[/dim]")
         try:
             result = subprocess.run(
-                [sys.executable, "-m", "pip", "install", "--upgrade"] + packages,
+                [py, "-m", "pip", "install", "--upgrade"] + packages,
                 capture_output=True, text=True, timeout=120
             )
             if result.returncode == 0:
